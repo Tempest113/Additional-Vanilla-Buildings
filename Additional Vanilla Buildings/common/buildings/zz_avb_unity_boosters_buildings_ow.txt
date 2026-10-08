@@ -1,0 +1,1496 @@
+##################
+# Monument buildings
+##################
+building_hypercomms_forum = {
+	base_buildtime = @b3_time
+	can_build = no
+
+	category = unity
+
+	building_sets = {
+		government
+		unity
+	}
+
+	potential = {
+		exists = owner
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+		owner = {
+			NOR = {
+				is_gestalt = yes
+				is_megacorp = yes
+				is_memorialist_empire = yes
+				is_entropy_drinkers_empire = yes
+			}
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				OR = {
+					is_gestalt = yes
+					is_megacorp = yes
+					is_memorialist_empire = yes
+					is_entropy_drinkers_empire = yes
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_corporate_forum
+		building_simulation_3
+		building_galactic_memorial_3
+		building_sensorium_3
+		building_lifecrypt_3
+		building_lifecrypt_machine_3
+		building_lifecrypt_hive_mind_3
+		building_lifecrypt_corporate_3
+		building_avatar_chamber_3
+	}
+
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = { exists = owner }
+			unity = 3
+			multiplier = owner.trigger:num_ascension_perks
+		}
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.15
+		planet_civilians_unity_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.1
+	}
+
+	triggered_desc = {
+		text = building_hypercomms_forum_effect
+	}
+
+	triggered_desc = {
+		text = job_civilian_ethics_effect
+	}
+
+	prerequisites = {
+		"tech_hypercomms_forum"
+	}
+
+	ai_resource_production = {
+		unity = 20
+	}
+
+	show_tech_unlock_if = {
+		is_gestalt = no
+		is_megacorp = no
+		is_memorialist_empire = no
+		is_entropy_drinkers_empire = no
+	}
+
+	upgrades = {
+		building_avb_monument_4
+	}
+}
+
+##########################
+# Machine Empire Memorial
+##########################
+building_simulation_3 = {
+	base_buildtime = @b3_time
+	can_build = no
+	category = unity
+
+	building_sets = {
+		government
+		unity
+	}
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_machine_empire = yes
+			is_memorialist_empire = no
+			is_entropy_drinkers_empire = no
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				OR = {
+					is_machine_empire = no
+					is_memorialist_empire = yes
+					is_entropy_drinkers_empire = yes
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_corporate_forum
+		building_hypercomms_forum
+		building_galactic_memorial_3
+		building_sensorium_3
+		building_lifecrypt_3
+		building_lifecrypt_machine_3
+		building_lifecrypt_hive_mind_3
+		building_lifecrypt_corporate_3
+	}
+
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = { exists = owner }
+			unity = 3
+			multiplier = owner.trigger:num_ascension_perks
+		}
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.15
+		planet_maintenance_drones_unity_produces_add = 0.1
+		planet_maintenance_drones_trade_produces_add = 0.1
+		planet_maintenance_drones_minerals_upkeep_add = 0.2
+	}
+
+	prerequisites = {
+		"tech_hypercomms_forum"
+	}
+
+	ai_resource_production = {
+		unity = 20
+		trade = 5
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+		is_memorialist_empire = no
+		is_entropy_drinkers_empire = no
+	}
+
+	upgrades = {
+		"building_avb_monument_machine_4"
+	}
+}
+
+####################
+# Megacorp Memorial
+####################
+building_corporate_forum = {
+	base_buildtime = @b3_time
+	icon = building_hypercomms_forum
+	can_build = no
+	category = unity
+
+	building_sets = {
+		government
+		unity
+	}
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_megacorp = yes
+			is_memorialist_empire = no
+			is_entropy_drinkers_empire = no
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				OR = {
+					is_megacorp = no
+					is_memorialist_empire = yes
+					is_entropy_drinkers_empire = yes
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_hypercomms_forum
+		building_simulation_3
+		building_galactic_memorial_3
+		building_sensorium_3
+		building_lifecrypt_3
+		building_lifecrypt_machine_3
+		building_lifecrypt_hive_mind_3
+		building_lifecrypt_corporate_3
+	}
+
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = { exists = owner }
+			unity = 3
+			multiplier = owner.trigger:num_ascension_perks
+		}
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.15
+		planet_civilians_unity_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.1
+	}
+
+	triggered_desc = {
+		text = building_hypercomms_forum_effect
+	}
+
+	triggered_desc = {
+		text = job_civilian_ethics_effect
+	}
+
+	prerequisites = {
+		"tech_hypercomms_forum"
+	}
+
+	ai_resource_production = {
+		unity = 20
+	}
+
+	show_tech_unlock_if = {
+		is_megacorp = yes
+		is_memorialist_empire = no
+		is_entropy_drinkers_empire = no
+	}
+
+	upgrades = {
+		building_avb_monument_corp_4
+	}
+}
+
+#######################
+# Hive Empire Memorial
+#######################
+building_sensorium_3 = {
+	base_buildtime = @b3_time
+	can_build = no
+	category = unity
+
+	building_sets = {
+		government
+		unity
+	}
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_hive_empire = yes
+			is_memorialist_empire = no
+			is_entropy_drinkers_empire = no
+			is_wilderness_empire = no # see 'building_avatar_chamber_3'
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				OR = {
+					is_hive_empire = no
+					is_memorialist_empire = yes
+					is_entropy_drinkers_empire = yes
+					is_wilderness_empire = yes
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_corporate_forum
+		building_hypercomms_forum
+		building_galactic_memorial_3
+		building_simulation_3
+		building_avatar_chamber_3
+	}
+
+	prerequisites = {
+		"tech_hypercomms_forum"
+	}
+
+	show_tech_unlock_if = {
+		is_hive_empire = yes
+		is_memorialist_empire = no
+		is_wilderness_empire = no
+		is_entropy_drinkers_empire = no
+	}
+
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = { exists = owner }
+			unity = 3
+			multiplier = owner.trigger:num_ascension_perks
+		}
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.15
+		planet_maintenance_drones_unity_produces_add = 0.1
+		planet_maintenance_drones_trade_produces_add = 0.1
+		planet_maintenance_drones_minerals_upkeep_add = 0.2
+	}
+
+	ai_resource_production = {
+		unity = 20
+		trade = 5
+	}
+
+	triggered_desc = {
+		text = building_hypercomms_forum_effect
+	}
+
+	upgrades = {
+		"building_avb_monument_hive_4"
+	}
+}
+
+##################
+# Memorialists
+##################
+#Galactic Memorial
+building_galactic_memorial_3 = {
+	base_buildtime = @b3_time
+	can_build = no
+	category = unity
+
+	building_sets = {
+		government
+		unity
+	}
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_memorialist_empire = yes
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = { is_memorialist_empire = no }
+		}
+	}
+
+	convert_to = {
+		building_hypercomms_forum
+		building_corporate_forum
+		building_simulation_3
+		building_sensorium_3
+		building_avatar_chamber_3
+	}
+
+	resources = {
+		category = planet_buildings
+		produces = {
+			trigger = { exists = owner }
+			unity = 3
+			multiplier = owner.trigger:num_ascension_perks
+		}
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @b3_rare_cost
+		}
+		upkeep = {
+			minerals = @b3_upkeep
+			exotic_gases = @b3_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.15
+		planet_bureaucrats_upkeep_mult = -0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		planet_civilians_unity_produces_add = 0.1
+		planet_civilians_consumer_goods_upkeep_add = 0.1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+			}
+		}
+		planet_maintenance_drones_unity_produces_add = 0.1
+		planet_maintenance_drones_trade_produces_add = 0.1
+		planet_maintenance_drones_minerals_upkeep_add = 0.2
+	}
+
+	triggered_desc = {
+		text = building_hypercomms_forum_effect
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		text = job_civilian_ethics_effect
+	}
+
+	prerequisites = {
+		"tech_hypercomms_forum"
+	}
+
+	#Tomb/Relic worlds
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+			OR = {
+				is_planet_class = pc_nuked
+				is_planet_class = pc_relic
+			}
+		}
+		pop_government_ethic_attraction = 0.20
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+			OR = {
+				is_planet_class = pc_nuked
+				is_planet_class = pc_relic
+			}
+		}
+		planet_crime_no_happiness_add = -20
+	}
+
+	show_tech_unlock_if = {
+		is_memorialist_empire = yes
+	}
+
+	ai_resource_production = {
+		unity = 20
+	}
+
+	upgrades = {
+		building_avb_monument_memorial_4
+	}
+}
+
+##################
+# Unity boosters
+##################
+
+building_autocurating_vault = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		exists = owner
+		is_special_colony_type = no
+		owner = {
+			is_machine_empire = no
+			is_megacorp = no
+			is_spiritualist = no
+			is_wilderness_empire = no
+			OR = {
+				is_hive_empire = yes
+				has_make_spiritualist_perk = no
+			}
+		}
+	}
+
+	allow = { }
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				OR = {
+					is_machine_empire = yes
+					is_spiritualist = yes
+					is_megacorp = yes
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_citadel_of_faith
+		building_alpha_hub
+		building_corporate_vault
+		building_trophy_vault
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher_with_additional_trigger
+			TRIGGER = "has_ringworld_output_boost = no"
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			trigger = {
+				has_ringworld_output_boost = no
+			}
+			rare_crystals = @b2_rare_cost
+		}
+		inline_script = {
+			script = buildings/nomadic_cost_switcher_with_additional_trigger
+			TRIGGER = "has_ringworld_output_boost = yes"
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = 1200
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			trigger = {
+				has_ringworld_output_boost = yes
+			}
+			rare_crystals = 375
+		}
+		upkeep = {
+			trigger = {
+				has_ringworld_output_boost = no
+			}
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				has_ringworld_output_boost = yes
+			}
+			energy = 8
+			rare_crystals = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_bureaucrats_unity_produces_add = 0.25
+		planet_bureaucrats_physics_research_produces_add = 0.1
+		planet_bureaucrats_society_research_produces_add = 0.1
+		planet_bureaucrats_engineering_research_produces_add = 0.1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_ringworld_output_boost = yes
+		}
+		planet_bureaucrats_unity_produces_add = 0.1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+		}
+		planet_bureaucrats_consumer_goods_upkeep_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		planet_bureaucrats_energy_upkeep_add = 4
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_lithoid_empire = no
+				is_infernal_empire = no
+			}
+		}
+		planet_bureaucrats_food_upkeep_add = 2
+		planet_bureaucrats_energy_upkeep_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_lithoid_empire = yes
+			}
+		}
+		planet_bureaucrats_minerals_upkeep_add = 2
+		planet_bureaucrats_energy_upkeep_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_infernal_empire = yes
+			}
+		}
+		planet_bureaucrats_alloys_upkeep_add = 0.75
+		planet_bureaucrats_energy_upkeep_add = 3
+	}
+
+	prerequisites = {
+		"tech_autocurating_vault"
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = no
+		is_spiritualist = no
+		is_megacorp = no
+		is_wilderness_empire = no
+		OR = {
+			is_hive_empire = yes
+			has_make_spiritualist_perk = no
+		}
+	}
+
+	upgrades = {
+		building_avb_autocurating_vault_2
+	}
+}
+
+building_citadel_of_faith = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_spiritualist = yes
+				AND = {
+					is_gestalt = no
+					has_make_spiritualist_perk = yes
+				}
+			}
+		}
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	allow = { }
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				OR = {
+					AND = {
+						is_spiritualist = no
+						has_make_spiritualist_perk = no
+					}
+					is_gestalt = yes
+				}
+			}
+			has_modifier = slave_colony
+		}
+	}
+
+	convert_to = {
+		building_autocurating_vault
+		building_alpha_hub
+		building_corporate_vault
+		building_trophy_vault
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher_with_additional_trigger
+			TRIGGER = "has_ringworld_output_boost = no"
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			trigger = {
+				has_ringworld_output_boost = no
+			}
+			rare_crystals = @b2_rare_cost
+		}
+		inline_script = {
+			script = buildings/nomadic_cost_switcher_with_additional_trigger
+			TRIGGER = "has_ringworld_output_boost = yes"
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = 1200
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			trigger = {
+				has_ringworld_output_boost = yes
+			}
+			rare_crystals = 375
+		}
+		upkeep = {
+			trigger = {
+				has_ringworld_output_boost = no
+			}
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				has_ringworld_output_boost = yes
+			}
+			energy = 8
+			rare_crystals = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_bureaucrats_unity_produces_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_ringworld_output_boost = yes
+		}
+		planet_bureaucrats_unity_produces_add = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+		}
+		planet_bureaucrats_consumer_goods_upkeep_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		planet_bureaucrats_energy_upkeep_add = 4
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_lithoid_empire = no
+				is_infernal_empire = no
+			}
+		}
+		planet_bureaucrats_food_upkeep_add = 2
+		planet_bureaucrats_energy_upkeep_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_lithoid_empire = yes
+			}
+		}
+		planet_bureaucrats_minerals_upkeep_add = 2
+		planet_bureaucrats_energy_upkeep_add = 2
+	}
+
+	inline_script = {
+		script = "jobs/politician_add_from_civic"
+		AMOUNT = @building_static_jobs
+		CIVIC = civic_exalted_priesthood
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_infernal_empire = yes
+			}
+		}
+		planet_bureaucrats_alloys_upkeep_add = 0.75
+		planet_bureaucrats_energy_upkeep_add = 3
+	}
+
+	prerequisites = {
+		"tech_transcendent_faith"
+	}
+
+	upgrades = {
+		building_avb_citadel_of_faith_2
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_politician
+		toggle = @has_bug_branch
+		CIVIC = civic_bugged_divine_council
+		AMOUNT = @building_static_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_politician
+		toggle = @has_bug_branch
+		CIVIC = civic_imperial_cult
+		AMOUNT = @building_static_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_politician
+		toggle = @has_bug_branch
+		CIVIC = civic_exalted_priesthood
+		AMOUNT = @building_static_jobs
+	}
+}
+
+building_corporate_vault = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+	icon = building_autocurating_vault
+
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		exists = owner
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+		owner = {
+			is_megacorp = yes
+			is_spiritualist = no
+			has_make_spiritualist_perk = no
+		}
+	}
+
+	allow = { }
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				OR = {
+					is_megacorp = no
+					is_spiritualist = yes
+					has_make_spiritualist_perk = yes
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_citadel_of_faith
+		building_autocurating_vault
+		building_alpha_hub
+		building_trophy_vault
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher_with_additional_trigger
+			TRIGGER = "has_ringworld_output_boost = no"
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			trigger = {
+				has_ringworld_output_boost = no
+			}
+			rare_crystals = @b2_rare_cost
+		}
+		inline_script = {
+			script = buildings/nomadic_cost_switcher_with_additional_trigger
+			TRIGGER = "has_ringworld_output_boost = yes"
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = 1200
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			trigger = {
+				has_ringworld_output_boost = yes
+			}
+			rare_crystals = 375
+		}
+		upkeep = {
+			trigger = {
+				has_ringworld_output_boost = no
+			}
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				has_ringworld_output_boost = yes
+			}
+			energy = 8
+			rare_crystals = 3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_ringworld_output_boost = yes
+		}
+		planet_bureaucrats_unity_produces_add = 0.5
+	}
+
+	planet_modifier = {
+		planet_bureaucrats_unity_produces_add = 0.5
+		planet_bureaucrats_trade_produces_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+		}
+		planet_bureaucrats_consumer_goods_upkeep_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		planet_bureaucrats_energy_upkeep_add = 4
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_lithoid_empire = no
+				is_infernal_empire = no
+			}
+		}
+		planet_bureaucrats_food_upkeep_add = 2
+		planet_bureaucrats_energy_upkeep_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_lithoid_empire = yes
+			}
+		}
+		planet_bureaucrats_minerals_upkeep_add = 2
+		planet_bureaucrats_energy_upkeep_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_infernal_empire = yes
+			}
+		}
+		planet_bureaucrats_alloys_upkeep_add = 0.75
+		planet_bureaucrats_energy_upkeep_add = 3
+	}
+
+	prerequisites = {
+		"tech_autocurating_vault"
+	}
+
+	show_tech_unlock_if = {
+		is_megacorp = yes
+		is_spiritualist = no
+		has_make_spiritualist_perk = no
+	}
+
+	upgrades = {
+		building_avb_corporate_vault_2
+	}
+}
+
+building_alpha_hub = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+	icon = building_autocurating_vault
+
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_machine_empire = yes
+			NOT = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = no
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	convert_to = {
+		building_autocurating_vault
+		building_citadel_of_faith
+		building_corporate_vault
+		building_trophy_vault
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher_with_additional_trigger
+			TRIGGER = "has_ringworld_output_boost = no"
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			trigger = {
+				has_ringworld_output_boost = no
+			}
+			rare_crystals = @b2_rare_cost
+		}
+		inline_script = {
+			script = buildings/nomadic_cost_switcher_with_additional_trigger
+			TRIGGER = "has_ringworld_output_boost = yes"
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = 1200
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			trigger = {
+				has_ringworld_output_boost = yes
+			}
+			rare_crystals = 375
+		}
+		upkeep = {
+			trigger = {
+				has_ringworld_output_boost = no
+			}
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				has_ringworld_output_boost = yes
+			}
+			energy = 8
+			rare_crystals = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_bureaucrats_unity_produces_add = 0.5
+		planet_bureaucrats_physics_research_produces_add = 0.1
+		planet_bureaucrats_society_research_produces_add = 0.1
+		planet_bureaucrats_engineering_research_produces_add = 0.1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_ringworld_output_boost = yes
+		}
+		planet_bureaucrats_unity_produces_add = 0.25
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = no
+			}
+		}
+		planet_bureaucrats_consumer_goods_upkeep_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		planet_bureaucrats_energy_upkeep_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_lithoid_empire = no
+				is_infernal_empire = no
+			}
+		}
+		planet_bureaucrats_food_upkeep_add = 1
+		planet_bureaucrats_energy_upkeep_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_lithoid_empire = yes
+			}
+		}
+		planet_bureaucrats_minerals_upkeep_add = 1
+		planet_bureaucrats_energy_upkeep_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_hive_empire = yes
+				is_infernal_empire = yes
+			}
+		}
+		planet_bureaucrats_alloys_upkeep_add = 0.75
+		planet_bureaucrats_energy_upkeep_add = 3
+	}
+
+	prerequisites = {
+		"tech_autocurating_vault"
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+		NOT = {
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+
+	upgrades = {
+		building_avb_alpha_hub_2
+	}
+}
+
+building_trophy_vault = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+	category = unity
+	icon = building_autocurating_vault
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		exists = owner
+		is_special_colony_type = no
+		owner = {
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+
+	allow = { }
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				NOT = {
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_autocurating_vault
+		building_citadel_of_faith
+		building_alpha_hub
+		building_corporate_vault
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				OR = {
+					NOT = { has_origin = origin_forever_cruise }
+					has_country_flag = forever_cruise_over
+				}
+			}
+		}
+		planet_bio_trophies_unity_produces_add = 0.5
+		planet_bio_trophies_consumer_goods_upkeep_add = 0.5
+		pop_cat_bio_trophy_happiness = 0.10
+	}
+
+	# Forever Cruise servitors house their Bio-Trophies as cruise passengers, so boost that category instead
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				has_origin = origin_forever_cruise
+				NOT = { has_country_flag = forever_cruise_over }
+			}
+		}
+		planet_cruise_passengers_unity_produces_add = 0.5
+		planet_cruise_passengers_consumer_goods_upkeep_add = 0.5
+		pop_cat_cruise_passenger_happiness = 0.10
+	}
+
+	# The unity/consumer goods modifiers act on the planet_cruise_passengers category, which covers both passenger jobs, so spell out that Neglected Bio-Trophies also benefit
+	triggered_desc = {
+		trigger = {
+			owner? = {
+				has_origin = origin_forever_cruise
+				NOT = { has_country_flag = forever_cruise_over }
+			}
+		}
+		text = building_trophy_vault_forever_cruise_effect
+	}
+
+	prerequisites = {
+		"tech_autocurating_vault"
+	}
+
+	show_tech_unlock_if = {
+		has_valid_civic = civic_machine_servitor
+	}
+
+	upgrades = {
+		building_avb_trophy_vault_2
+	}
+}
+
+# Archaeotech
+building_league_offices = {
+	base_buildtime = @b2_time
+
+	empire_limit = {
+		base = 1
+	}
+
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			has_technology = tech_secrets_league
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		has_modifier = slave_colony
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @b2_rare_cost
+			minor_artifacts = 30
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+		cost = {
+			trigger = {
+				owner = { is_wilderness_empire = yes }
+			}
+			biomass = @b3_biomass
+		}
+	}
+
+	inline_script = {
+		script = buildings/on_all_wilderness_buildings_districts
+	}
+
+	country_modifier = {
+		country_edict_fund_add = 50
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner = { has_ascension_perk = ap_archaeoengineers }
+		}
+		country_edict_fund_add = 50
+	}
+
+	planet_modifier = {
+		planet_bureaucrats_unity_produces_add = 0.25
+	}
+
+	triggered_desc = {
+		text = building_league_offices_effect
+	}
+
+	inline_script = {
+		script = jobs/unity_jobs_add
+		AMOUNT = @building_static_jobs
+	}
+
+	prerequisites = {
+		"tech_secrets_league"
+	}
+
+	upgrades = {
+		building_avb_league_offices_2
+	}
+}

@@ -1,0 +1,640 @@
+building_avb_military_academy_2 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+
+	can_be_ruined = no
+	category = army
+
+	building_sets = {
+		fortress
+	}
+
+	potential = {
+		owner? = {
+			is_wilderness_empire = no
+			NOT = { has_valid_civic = civic_reanimated_armies }
+		}
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	allow = {
+		OR = {
+			has_upgraded_capital_4 = yes
+			AND = {
+				has_major_upgraded_capital = yes
+				owner? = {
+					has_valid_civic = civic_machine_tactical_algorithms
+				}
+			}
+		}
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = { has_valid_civic = civic_machine_tactical_algorithms }
+		}
+		ship_evasion_mult = 0.03
+		ship_tracking_mult = 0.015
+		ship_shield_penetration_add = 0.075
+		ship_armor_penetration_add = 0.075
+		mult = owner.value:tactical_algorithms_scaling_mult
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = { has_valid_civic = civic_machine_tactical_algorithms }
+		}
+		ship_shield_hardening_add = 0.15
+		mult = owner.value:tactical_algorithms_enclave_scaling_mult
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = {
+				is_gestalt = no
+			}
+		}
+		pop_soldier_bonus_workforce_mult = 0.225
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = {
+				is_gestalt = yes
+			}
+		}
+		pop_warrior_drone_bonus_workforce_mult = 0.225
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = {
+				has_origin = origin_toxic_knights
+			}
+		}
+		pop_knight_bonus_workforce_mult = 0.075
+		pop_knight_commander_bonus_workforce_mult = 0.0375
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+			volatile_motes = @avb_b3_rare_upkeep
+		}
+		# Machines with civic
+		cost = {
+			trigger = {
+				owner? = {
+					NOT = { has_valid_civic = civic_machine_tactical_algorithms }
+				}
+			}
+			volatile_motes = @avb_b3_rare_cost
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					NOT = { has_valid_civic = civic_machine_tactical_algorithms }
+				}
+			}
+			volatile_motes = @avb_b3_rare_upkeep
+		}
+		# Machines with civic
+		cost = {
+			trigger = {
+				owner? = {
+					has_valid_civic = civic_machine_tactical_algorithms
+				}
+			}
+			volatile_motes = @b2_rare_cost
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					has_valid_civic = civic_machine_tactical_algorithms
+				}
+			}
+			volatile_motes = @b2_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_military_academy_2"
+	}
+
+	inline_script = {
+		script = jobs/soldiers_add
+		AMOUNT = @avb_b2_jobs
+	}
+
+	show_tech_unlock_if = {
+		always = yes
+	}
+}
+
+building_avb_dread_encampment_2 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	can_be_ruined = no
+	category = army
+
+	building_sets = {
+		government
+		fortress
+	}
+
+	potential = {
+		owner? = { has_valid_civic = civic_reanimated_armies }
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @avb_b2_upkeep
+		}
+	}
+
+	inline_script = {
+		script = jobs/soldiers_add
+		AMOUNT = @avb_b4_jobs
+	}
+
+	planet_modifier = {
+		planet_soldiers_society_research_produces_add = 0.75
+		planet_soldiers_engineering_research_produces_add = 0.75
+		planet_soldiers_consumer_goods_upkeep_add = 0.75
+	}
+
+	prerequisites = {
+		"tech_avb_military_academy_2"
+	}
+
+	triggered_desc = {
+		text = building_dread_encampment_tt
+	}
+
+	show_tech_unlock_if = {
+		owner? = { has_valid_civic = civic_reanimated_armies }
+	}
+}
+
+building_avb_stronghold_3 = {
+	base_buildtime = @avb_b2_time
+	can_build = no
+	planetary_ftl_inhibitor = yes
+	position_priority = 100
+	can_be_ruined = no
+	category = army
+
+	building_sets = {
+		government
+		fortress
+	}
+
+	potential = {
+		owner = { is_wilderness_empire = no } # see 'building_planetary_carapace_2'
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	resources = {
+		category = planet_buildings_strongholds
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			volatile_motes = @avb_b3_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b2_upkeep
+			volatile_motes = @avb_b3_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_stronghold_3"
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+
+	inline_script = {
+		script = jobs/soldiers_add
+		AMOUNT = @avb_b4_jobs
+	}
+
+	upgrades = {
+		"building_avb_stronghold_4"
+	}
+}
+
+building_avb_stronghold_4 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	planetary_ftl_inhibitor = yes
+	position_priority = 100
+	can_be_ruined = no
+	category = army
+
+	building_sets = {
+		government
+		fortress
+	}
+
+	potential = {
+		owner = { is_wilderness_empire = no } # see 'building_planetary_carapace_2'
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	resources = {
+		category = planet_buildings_strongholds
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			volatile_motes = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+			volatile_motes = @avb_b4_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_stronghold_4"
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+
+	inline_script = {
+		script = jobs/soldiers_add
+		AMOUNT = @avb_b5_jobs
+	}
+
+	upgrades = {
+		"building_avb_stronghold_5"
+	}
+}
+
+building_avb_stronghold_5 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	planetary_ftl_inhibitor = yes
+	position_priority = 100
+	can_be_ruined = no
+	category = army
+
+	building_sets = {
+		government
+		fortress
+	}
+
+	potential = {
+		owner = { is_wilderness_empire = no } # see 'building_planetary_carapace_2'
+	}
+
+	allow = {
+		has_upgraded_capital_4 = yes
+	}
+
+	resources = {
+		category = planet_buildings_strongholds
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b5_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			volatile_motes = @avb_b5_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			volatile_motes = @avb_b5_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_stronghold_5"
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+
+	inline_script = {
+		script = jobs/soldiers_add
+		AMOUNT = @avb_b6_jobs
+	}
+}
+
+building_avb_planetary_shield_generator_2 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	position_priority = 100
+
+	category = army
+
+	building_sets = {
+		government
+		fortress
+	}
+
+	potential = {
+		owner = {
+			is_wilderness_empire = no # see 'building_ozone_thickener'
+			is_nomadic = no
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+		orbital_ring_and_arkship_equivalent_absent = {
+			RING = ring_orbital_shield_generator
+			ARKSHIP = arkship_shield_generator
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_planetary_shield_generator_2"
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+		is_nomadic = no
+	}
+
+	planet_modifier = {
+		planet_orbital_bombardment_damage = -0.65
+	}
+
+	triggered_planet_modifier = {
+		potential = { has_cosmic_storms_dlc = yes }
+		planet_storm_devastation_mult = -0.65
+	}
+
+	inline_script = {
+		script = cosmic_storms/StormBuildingModifiers
+	}
+
+	inline_script = {
+		# on_built & on_destroy behaviors
+		script = cosmic_storms/PlanetaryShieldOnBuiltDestroy
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b3_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+			exotic_gases = @avb_b3_rare_upkeep
+		}
+	}
+
+	upgrades = {
+		building_avb_planetary_shield_generator_3
+	}
+
+	custom_storm_ai_weight = {
+		weight = 0
+		modifier = {
+			add = 5
+			has_designation = col_fortress
+		}
+		modifier = {
+			add = 5
+			exists = owner
+			solar_system? = {
+				owner? = { num_cosmic_storms_encountered >= 2 }
+			}
+		}
+	}
+}
+
+building_avb_planetary_shield_generator_3 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	position_priority = 100
+
+	category = army
+
+	building_sets = {
+		government
+		fortress
+	}
+
+	potential = {
+		owner = {
+			is_wilderness_empire = no # see 'building_ozone_thickener'
+			is_nomadic = no
+		}
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+		orbital_ring_and_arkship_equivalent_absent = {
+			RING = ring_orbital_shield_generator
+			ARKSHIP = arkship_shield_generator
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_planetary_shield_generator_3"
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+		is_nomadic = no
+	}
+
+	planet_modifier = {
+		planet_orbital_bombardment_damage = -0.75
+	}
+
+	triggered_planet_modifier = {
+		potential = { has_cosmic_storms_dlc = yes }
+		planet_storm_devastation_mult = -0.75
+	}
+
+	inline_script = {
+		script = cosmic_storms/StormBuildingModifiers
+	}
+
+	inline_script = {
+		# on_built & on_destroy behaviors
+		script = cosmic_storms/PlanetaryShieldOnBuiltDestroy
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b4_rare_cost
+			rare_crystals = @avb_b3_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			exotic_gases = @avb_b4_rare_upkeep
+			rare_crystals = @avb_b3_rare_upkeep
+		}
+	}
+
+	upgrades = {
+		building_avb_dark_matter_planetary_shield_generator
+	}
+
+	custom_storm_ai_weight = {
+		weight = 0
+		modifier = {
+			add = 5
+			has_designation = col_fortress
+		}
+		modifier = {
+			add = 5
+			exists = owner
+			solar_system? = {
+				owner? = { num_cosmic_storms_encountered >= 2 }
+			}
+		}
+	}
+}
+
+building_avb_dark_matter_planetary_shield_generator = {
+	base_buildtime = @avb_b6_time
+	can_build = no
+	position_priority = 100
+
+	category = army
+
+	building_sets = {
+		government
+		fortress
+	}
+
+	potential = {
+		owner? = {
+			is_wilderness_empire = no # see 'building_ozone_thickener'
+			is_nomadic = no
+		}
+	}
+
+	allow = {
+		has_upgraded_capital_6 = yes
+		orbital_ring_and_arkship_equivalent_absent = {
+			RING = ring_orbital_shield_generator
+			ARKSHIP = arkship_shield_generator
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_dark_matter_planetary_shield_generator"
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+		is_nomadic = no
+	}
+
+	planet_modifier = {
+		planet_orbital_bombardment_damage = -0.90
+	}
+
+	triggered_planet_modifier = {
+		potential = { has_cosmic_storms_dlc = yes }
+		planet_storm_devastation_mult = -0.9
+	}
+
+	inline_script = {
+		script = cosmic_storms/StormBuildingModifiers
+	}
+
+	inline_script = { # on_built & on_destroy behaviors
+		script = cosmic_storms/PlanetaryShieldOnBuiltDestroy
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = sr_dark_matter
+			COST = @avb_b6_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_dark_matter
+		}
+		cost = {
+			sr_dark_matter = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b6_upkeep
+			sr_dark_matter = @avb_b4_rare_upkeep
+		}
+	}
+
+	custom_storm_ai_weight = {
+		weight = 0
+		modifier = {
+			add = 5
+			has_designation = col_fortress
+		}
+		modifier = {
+			add = 5
+			exists = owner
+			solar_system? = {
+				owner? = { num_cosmic_storms_encountered >= 2 }
+			}
+		}
+	}
+}

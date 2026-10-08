@@ -1,0 +1,1215 @@
+building_avb_robot_assembly_plant_2 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+
+	category = pop_assembly
+
+	building_sets = {
+		government
+		urban
+	}
+
+	potential = {
+		owner? = {
+			is_regular_empire = yes
+			is_individual_machine = no
+			NOT = { has_policy_flag = robots_outlawed }
+			OR = {
+				is_ai = no
+				NOT = { has_ascension_perk = ap_engineered_evolution }
+				is_materialist = yes
+			}
+		}
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	convert_to = {
+		building_avb_machine_assembly_plant_2
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				OR = {
+					is_regular_empire = no
+					has_policy_flag = robots_outlawed
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				free_district_slots = 0
+				free_building_slots = 0
+				free_housing <= 0
+				free_jobs <= 0
+			}
+			owner = {
+				is_ai = yes
+				has_ascension_perk = ap_engineered_evolution
+				is_materialist = no
+			}
+		}
+	}
+
+	inline_script = {
+		script = jobs/roboticist_add
+		AMOUNT = @avb_b2_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				OR = {
+					has_origin = origin_mechanists
+					is_individual_machine = yes
+					has_country_flag = synthetic_empire
+				}
+			}
+			any_owned_pop_group = {
+				has_auto_modding_trait = yes
+			}
+		}
+		modifier = {
+			auto_mod_monthly_add = 600
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				has_country_flag = synth_unscheduled_updates
+			}
+		}
+		modifier = {
+			planet_pop_assembly_mult = 0.15
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				has_country_flag = synth_safe_updates
+			}
+		}
+		modifier = {
+			planet_pop_assembly_mult = -0.075
+			planet_stability_add = 3
+		}
+	}
+
+	### JOB STRATA FOCUS MODIFIERS ###
+	triggered_planet_modifier = {
+		# Synth ruler focus
+		potential = {
+			owner? = {
+				has_country_flag = synth_focus_rulers
+			}
+		}
+		modifier = {
+			planet_jobs_ruler_produces_mult = 0.225
+		}
+	}
+
+	triggered_planet_modifier = {
+		# Synth specialist focus
+		potential = {
+			owner? = {
+				has_country_flag = synth_focus_specialists
+			}
+		}
+		modifier = {
+			planet_jobs_specialist_produces_mult = 0.075
+		}
+	}
+
+	triggered_planet_modifier = {
+		# Synth worker focus
+		potential = {
+			owner? = {
+				has_country_flag = synth_focus_workers
+			}
+		}
+		modifier = {
+			planet_jobs_worker_produces_mult = 0.15
+		}
+	}
+
+	triggered_planet_modifier = {
+		# Synth upkeep focus
+		potential = {
+			owner? = {
+				has_country_flag = synth_focus_upkeep
+			}
+		}
+		modifier = {
+			planet_jobs_upkeep_mult = -0.075
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			rare_crystals = @avb_b4_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_robot_assembly_plant_2"
+	}
+}
+
+building_avb_machine_assembly_plant_2 = {
+	base_buildtime = @avb_b3_time
+	icon = building_avb_robot_assembly_plant_2
+	can_build = no
+
+	category = pop_assembly
+
+	building_sets = {
+		government
+		urban
+	}
+
+	potential = {
+		owner? = {
+			OR = {
+				is_machine_empire = yes
+				is_individual_machine = yes
+				is_hive_empire_with_machines = yes
+			}
+		}
+		NOT = {
+			has_modifier = resort_colony
+		}
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	convert_to = {
+		building_avb_robot_assembly_plant_2
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				is_robot_empire = no
+				is_hive_empire_with_machines = no
+			}
+			AND = {
+				owner = { is_ai = yes }
+				free_district_slots = 0
+				free_building_slots = 0
+				free_housing <= 0
+				free_jobs <= 0
+			}
+		}
+	}
+
+	inline_script = {
+		script = jobs/roboticist_add
+		AMOUNT = @avb_b2_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = {
+					exists = owner
+					owner = { is_bugged_happy_gestalt = yes }
+				}
+				job_artisan_drone_add = 100
+			}
+			triggered_desc = {
+				trigger = {
+					exists = owner
+					owner = { is_bugged_happy_gestalt = yes }
+				}
+				text = job_artisan_drone_effect_desc
+			}
+		"
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				OR = {
+					is_machine_empire = yes
+					is_individual_machine = yes
+				}
+			}
+			any_owned_pop_group = {
+				has_auto_modding_trait = yes
+			}
+		}
+		modifier = {
+			auto_mod_monthly_add = 600
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			rare_crystals = @avb_b4_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_machine_assembly_plant_2"
+	}
+}
+
+building_avb_spawning_pool_2 = {
+	base_buildtime = @avb_b2_time
+	can_build = no
+
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+	}
+
+	potential = {
+		owner? = {
+			is_hive_empire = yes
+			is_wilderness_empire = no
+			NOT = { has_origin = origin_progenitor_hive }
+		}
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		owner? = {
+			OR = {
+				is_hive_empire = no
+				has_origin = origin_progenitor_hive
+			}
+		}
+	}
+
+	inline_script = {
+		script = jobs/spawning_drone_add
+		AMOUNT = @building_static_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = {
+					exists = owner
+					owner = { is_bugged_happy_gestalt = yes }
+				}
+				job_artisan_drone_add = 100
+			}
+			triggered_desc = {
+				trigger = {
+					exists = owner
+					owner = { is_bugged_happy_gestalt = yes }
+				}
+				text = job_artisan_drone_effect_desc
+			}
+		"
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				has_technology = tech_gene_tailoring
+			}
+			any_owned_pop_group = {
+				has_auto_modding_trait = yes
+			}
+		}
+		modifier = {
+			auto_mod_monthly_add = 400
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				game_start_auto_mod_empire = yes
+			}
+			any_owned_pop_group = {
+				has_auto_modding_trait = yes
+			}
+		}
+		modifier = {
+			auto_mod_monthly_add = 400
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = { has_active_tradition = tr_cybernetics_synaptic_sub_processing }
+		}
+		modifier = {
+			job_augmentor_drone_add = @avb_b2_jobs
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = 100
+		}
+		upkeep = {
+			energy = @avb_b2_upkeep
+			exotic_gases = 2
+			volatile_motes = 1
+		}
+	}
+
+	convert_to = {
+		building_avb_offspring_nest_2
+	}
+
+	prerequisites = {
+		"tech_avb_spawning_pool_2"
+	}
+
+	triggered_desc = {
+		text = spawning_pool_tooltip
+	}
+}
+
+building_avb_offspring_nest_2 = {
+	base_buildtime = @avb_b2_time
+
+	can_build = no
+	category = pop_assembly
+
+	building_sets = {
+		government
+		urban
+	}
+
+	potential = {
+		owner? = {
+			has_origin = origin_progenitor_hive
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+		NOT = {
+			fleet.starbase? = {
+				has_starbase_building = arkship_offspring_outlook
+			}
+		}
+	}
+
+	destroy_trigger = {
+		OR = {
+			owner? = {
+				NOT = {
+					has_origin = origin_progenitor_hive
+				}
+			}
+			fleet.starbase? = {
+				has_starbase_building = arkship_offspring_outlook
+			}
+		}
+	}
+
+	inline_script = {
+		script = jobs/spawning_drone_add
+		AMOUNT = @building_static_jobs
+	}
+
+	convert_to = {
+		building_avb_spawning_pool_2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = { has_active_tradition = tr_cybernetics_synaptic_sub_processing }
+		}
+		modifier = {
+			job_augmentor_drone_add = @avb_b2_jobs
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = 100
+		}
+		upkeep = {
+			energy = @avb_b2_upkeep
+		}
+	}
+
+	prerequisites = {
+		tech_avb_offspring_nest_2
+	}
+
+	triggered_desc = {
+		text = offspring_nest_tooltip
+	}
+}
+
+building_avb_necrophage_3 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	position_priority = 100
+
+	category = pop_assembly
+
+	building_sets = {
+		government
+		urban
+	}
+
+	desc = {
+		trigger = {
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_hive_empire = no }
+			}
+		}
+		text = building_avb_necrophage_3_desc
+	}
+
+	desc = {
+		trigger = {
+			owner? = { is_hive_empire = yes }
+		}
+		text = building_avb_necrophage_3_desc_hive
+	}
+
+	potential = {
+		owner? = {
+			has_origin = origin_necrophage
+			has_trait = trait_necrophage
+			NOR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_hive_devouring_swarm
+			}
+			is_ai = no #the AI will just kill all its necrophytes
+		}
+	}
+
+	allow = {
+		hidden_trigger = {
+			if = {
+				limit = {
+					owner = { is_ai = yes }
+				}
+				any_owned_species = {
+					species_can_be_necrophaged = yes
+				}
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_necrophage }
+					NOT = { has_trait = trait_necrophage }
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				NOT = {
+					any_owned_species = {
+						species_can_be_necrophaged = yes
+					}
+				}
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_necro_apprentice_add = @avb_b4_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_hive
+			owner? = { is_hive_empire = yes }
+		}
+		job_necro_apprentice_add = @avb_b2_jobs
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b3_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+			exotic_gases = @avb_b3_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		tech_avb_necrophage_3
+	}
+
+	show_tech_unlock_if = {
+		has_origin = origin_necrophage
+		has_trait = trait_necrophage
+	}
+
+	triggered_desc = {
+		text = disables_necrophage_growth
+	}
+
+	triggered_desc = {
+		text = necrophage_elevation_timer_tooltip
+		trigger = {
+			has_carrier_flag = necrophage_elevation_timer
+		}
+	}
+}
+
+building_avb_clone_vats_2 = {
+	base_buildtime = @avb_b2_time
+	can_build = no
+
+	category = pop_assembly
+
+	planet_limit = {
+		base = 1
+		modifier = {
+			owner? = {
+				has_tradition = tr_cloning_finish
+			}
+			has_upgraded_capital = yes
+			add = 1
+		}
+		modifier = {
+			owner? = {
+				has_tradition = tr_cloning_finish
+			}
+			has_major_upgraded_capital = yes
+			add = 1
+		}
+		modifier = {
+			owner? = {
+				has_tradition = tr_cloning_finish
+			}
+			has_fully_upgraded_capital = yes
+			add = 1
+		}
+		modifier = {
+			owner? = {
+				has_tradition = tr_cloning_finish
+			}
+			has_upgraded_capital_4 = yes
+			add = 1
+		}
+		modifier = {
+			owner? = {
+				has_tradition = tr_cloning_finish
+			}
+			has_upgraded_capital_5 = yes
+			add = 1
+		}
+		modifier = {
+			owner? = {
+				has_tradition = tr_cloning_finish
+			}
+			has_upgraded_capital_6 = yes
+			add = 1
+		}
+	}
+
+	building_sets = {
+		government
+		urban
+	}
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = resort_colony }
+		OR = {
+			owner = { is_ai = no }
+			NOT = { exists = assembling_species }
+			assembling_species = { is_organic_species = yes }
+		}
+		OR = {
+			owner = { is_ai = no }
+			NAND = {
+				free_district_slots = 0
+				free_building_slots <= 1
+				free_housing <= 0
+				free_jobs <= 0
+			}
+		}
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			AND = {
+				owner = { is_ai = yes }
+				free_district_slots = 0
+				free_building_slots = 0
+				free_housing <= 0
+				free_jobs <= 0
+			}
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				has_technology = tech_gene_tailoring
+			}
+			any_owned_pop_group = {
+				has_auto_modding_trait = yes
+			}
+		}
+		modifier = {
+			auto_mod_monthly_add = 300
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				game_start_auto_mod_empire = yes
+			}
+			any_owned_pop_group = {
+				has_auto_modding_trait = yes
+			}
+		}
+		modifier = {
+			auto_mod_monthly_add = 300
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				has_country_flag = clone_army_full_potential
+				has_active_tradition = tr_cloning_adopt_clone_army
+			}
+		}
+		clone_soldiers_sustained = @clones_sustained_low
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				has_country_flag = clone_army_full_potential
+				has_active_tradition = tr_cloning_finish_clone_army
+			}
+		}
+		clone_soldiers_sustained = @clones_sustained_low
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				is_cloning_authority = yes
+				is_megacorp = yes
+			}
+		}
+		planet_jobs_trade_produces_mult = @replicatory_association_trade_mult
+		planet_amenities_add = @replicatory_association_amenities_add
+	}
+
+	inline_script = {
+		script = output/bonus_pop_growth
+		TRIGGER = "owner? = {
+			has_cloning_tradition = no
+		}"
+		AMOUNT = 2.25
+	}
+
+	inline_script = {
+		script = output/bonus_pop_growth
+		TRIGGER = "owner? = {
+			has_cloning_tradition = yes
+			NOT = {
+				has_tradition = tr_genetics_efficient_cloning
+			}
+		}"
+		AMOUNT = 4.5
+	}
+
+	inline_script = {
+		script = output/bonus_pop_growth
+		TRIGGER = "owner? = {
+			has_cloning_tradition = yes
+			has_tradition = tr_genetics_efficient_cloning
+		}"
+		AMOUNT = 6.75
+	}
+
+	resources = {
+		category = planet_buildings_clone_vats
+		# Base cost
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = 1000
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		# Organic/Lithoid/infernal cost
+		inline_script = {
+			script = buildings/nomadic_cost_switcher_with_additional_trigger
+			TRIGGER = "owner? = { is_lithoid_or_infernal_empire = no }"
+			REGULAR_RESOURCE = food
+			NOMADIC_RESOURCE = exotic_gases
+			COST = 1000
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		inline_script = {
+			script = buildings/nomadic_cost_switcher_with_additional_trigger
+			TRIGGER = "owner? = { is_lithoid_or_infernal_empire = yes }"
+			REGULAR_RESOURCE = energy
+			NOMADIC_RESOURCE = rare_crystals
+			COST = 1000
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		# Base upkeep
+		upkeep = {
+			energy = 5
+		}
+		# Org/Lith upkeep
+		upkeep = {
+			trigger = {
+				owner? = {
+					is_lithoid_or_infernal_empire = no
+				}
+			}
+			food = 30
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					is_lithoid_or_infernal_empire = no
+					has_cloning_tradition = yes
+				}
+			}
+			food = 30
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					is_lithoid_empire = yes
+				}
+			}
+			minerals = 30
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					is_lithoid_empire = yes
+					has_cloning_tradition = yes
+				}
+			}
+			minerals = 30
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					is_infernal_empire = yes
+				}
+			}
+			alloys = @b3_alloy_upkeep
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					is_infernal_empire = yes
+					has_cloning_tradition = yes
+				}
+			}
+			alloys = @b3_alloy_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_clone_vats_2"
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = {
+					exists = owner
+					owner = { is_bugged_evolutionary_architects = yes }
+				}
+				planet_jobs_unity_produces_mult = 0.2
+			}
+		"
+	}
+}
+
+building_avb_clone_army_clone_vat_2 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	position_priority = 100
+
+	category = pop_assembly
+
+	building_sets = {
+		origin
+	}
+
+	potential = {
+		owner? = {
+			has_origin = origin_clone_army
+			NOT = {
+				has_country_flag = clone_army_fertility_unlocked
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				OR = {
+					NOT = { has_origin = origin_clone_army }
+					is_synthetic_empire = yes
+					has_country_flag = clone_army_fertility_unlocked
+				}
+			}
+		}
+	}
+
+	planet_modifier = {
+		clone_soldiers_sustained = 4000
+	}
+
+	triggered_planet_pop_group_modifier_for_species = {
+		potential = {
+			has_infertile_clone_soldier_trait = yes
+			planet = {
+				check_variable = { which = clone_pops_missing_per_vat value > 3700 }
+			}
+		}
+		bonus_pop_growth = 25
+	}
+
+	triggered_planet_pop_group_modifier_for_species = {
+		potential = {
+			has_infertile_clone_soldier_trait = yes
+			planet = {
+				check_variable = { which = clone_pops_missing_per_vat value <= 600 }
+			}
+		}
+		bonus_pop_growth = 3
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			check_variable = { which = clone_pops_missing_per_vat value > 3700 }
+		}
+		fake_pop_growth_mod = 25
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			check_variable = { which = clone_pops_missing_per_vat value <= 600 }
+		}
+		fake_pop_growth_mod = 3
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				is_cloning_authority = yes
+				is_megacorp = yes
+			}
+		}
+		planet_jobs_trade_produces_mult = @replicatory_association_trade_mult
+		planet_amenities_add = @replicatory_association_amenities_add
+		mult = 3
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 3700
+		LOWER_LIMIT = 3400
+		GROWTH = 22
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 3400
+		LOWER_LIMIT = 3100
+		GROWTH = 22
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 3100
+		LOWER_LIMIT = 2800
+		GROWTH = 22
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 2800
+		LOWER_LIMIT = 2500
+		GROWTH = 22
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 2500
+		LOWER_LIMIT = 2200
+		GROWTH = 22
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 2200
+		LOWER_LIMIT = 2000
+		GROWTH = 22
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 2000
+		LOWER_LIMIT = 1800
+		GROWTH = 20
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 1800
+		LOWER_LIMIT = 1600
+		GROWTH = 17
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 1600
+		LOWER_LIMIT = 1400
+		GROWTH = 15
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 1400
+		LOWER_LIMIT = 1200
+		GROWTH = 12
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 1200
+		LOWER_LIMIT = 1000
+		GROWTH = 10
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 1000
+		LOWER_LIMIT = 800
+		GROWTH = 7
+	}
+
+	inline_script = {
+		script = buildings/clone_army_vat_output
+		UPPER_LIMIT = 800
+		LOWER_LIMIT = 600
+		GROWTH = 5
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = {
+					exists = owner
+					owner = { is_bugged_evolutionary_architects = yes }
+				}
+				planet_jobs_unity_produces_mult = 0.2
+			}
+		"
+	}
+
+	resources = {
+		category = planet_buildings_clone_vats
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					is_lithoid_or_infernal_empire = no
+				}
+			}
+			food = @b3_upkeep
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					is_lithoid_empire = yes
+				}
+			}
+			minerals = @b3_upkeep
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					is_infernal_empire = yes
+				}
+			}
+			alloys = @b3_alloy_upkeep
+		}
+	}
+
+	prerequisites = { tech_avb_clone_army_vats_2 }
+
+	triggered_desc = {
+		text = building_clone_army_clone_vat_effect_desc
+	}
+
+	is_essential = yes
+	ai_estimate_without_unemployment = yes
+}
+
+building_avb_posthumous_employment_center_2 = {
+	base_buildtime = @avb_b2_time
+	can_build = no
+
+	category = pop_assembly
+
+	building_sets = {
+		government
+		urban
+	}
+
+	potential = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			NAND = {
+				free_district_slots = 0
+				free_building_slots <= 1
+				free_housing <= 0
+				free_jobs <= 0
+			}
+		}
+		owner = {
+			is_regular_empire = yes
+			has_valid_civic = civic_permanent_employment
+		}
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				NOT = { has_valid_civic = civic_permanent_employment }
+			}
+			AND = {
+				owner = { is_ai = yes }
+				free_district_slots = 0
+				free_building_slots = 0
+				free_housing <= 0
+				free_jobs <= 0
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_reassigner_add = @building_static_jobs
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @avb_b2_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_posthumous_employment_center_2"
+	}
+}

@@ -1,0 +1,113 @@
+has_upgraded_capital_4 = {
+	hidden_trigger = { exists = owner }
+	if = {
+		limit = { has_modifier = resort_colony }
+		custom_tooltip = {
+			fail_text = "requires_building_resort_capital_3"
+			capital_tier >= 4
+		}
+	}
+	else_if = {
+		limit = { has_modifier = slave_colony }
+		custom_tooltip = {
+			fail_text = "requires_building_slave_capital_3"
+			capital_tier >= 4
+		}
+	}
+	else_if = {
+		limit = { is_planet_class = pc_habitat }
+		custom_tooltip = {
+			fail_text = "requires_building_hab_capital"
+			capital_tier >= 5
+		}
+	}
+	else_if = {
+		limit = { owner = { is_wilderness_empire = yes } }
+		custom_tooltip = {
+			fail_text = "requires_building_wilderness_system_capital"
+			capital_tier >= 5
+		}
+	}
+	else_if = {
+		limit = { owner = { is_hive_empire = yes } } # excludes Wilderness, above
+		custom_tooltip = {
+			fail_text = "requires_building_major_hive_capital"
+			capital_tier >= 4
+		}
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		custom_tooltip = {
+			fail_text = "requires_building_machine_capital_4"
+			capital_tier >= 5
+		}
+	}
+	else = {
+		custom_tooltip = {
+			fail_text = "requires_building_capital_4"
+			capital_tier >= 5
+		}
+	}
+}
+
+has_upgraded_capital_5 = {
+	hidden_trigger = { exists = owner }
+	if = {
+		limit = { owner = { is_wilderness_empire = yes } }
+		custom_tooltip = {
+			fail_text = "requires_building_wilderness_system_capital"
+			capital_tier >= 6
+		}
+	}
+	else_if = {
+		limit = { owner = { is_hive_empire = yes } } # excludes Wilderness, above
+		custom_tooltip = {
+			fail_text = "requires_building_major_hive_capital"
+			capital_tier >= 5
+		}
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		custom_tooltip = {
+			fail_text = "requires_building_machine_capital_4"
+			capital_tier >= 6
+		}
+	}
+	else = {
+		custom_tooltip = {
+			fail_text = "requires_building_capital_4"
+			capital_tier >= 6
+		}
+	}
+}
+
+has_upgraded_capital_6 = {
+	hidden_trigger = { exists = owner }
+	if = {
+		limit = { owner = { is_wilderness_empire = yes } }
+		custom_tooltip = {
+			fail_text = "requires_building_wilderness_system_capital"
+			capital_tier >= 7
+		}
+	}
+	else_if = {
+		limit = { owner = { is_hive_empire = yes } } # excludes Wilderness, above
+		custom_tooltip = {
+			fail_text = "requires_building_major_hive_capital"
+			capital_tier >= 6
+		}
+	}
+	else_if = {
+		limit = { owner = { is_machine_empire = yes } }
+		custom_tooltip = {
+			fail_text = "requires_building_machine_capital_4"
+			capital_tier >= 7
+		}
+	}
+	else = {
+		custom_tooltip = {
+			fail_text = "requires_building_capital_4"
+			capital_tier >= 7
+		}
+	}
+}

@@ -1,0 +1,1593 @@
+building_avb_bureaucratic_4 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			is_regular_empire = yes
+			is_spiritualist = no
+			has_make_spiritualist_perk = no
+		}
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+		}
+	}
+
+	exempt_from_ai_planet_specialization = no
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		owner? = {
+			OR = {
+				is_regular_empire = no
+				is_spiritualist = yes
+				has_make_spiritualist_perk = yes
+			}
+		}
+	}
+
+	convert_to = {
+		building_avb_temple_4
+		building_avb_machine_unity_4
+		building_avb_hive_unity_4
+		building_avb_death_temple_4
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			rare_crystals = @avb_b4_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_bureaucrat_bonus_workforce_mult = @avb_unity_workforce_4
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner.federation
+			owner = {
+				federation = {
+					has_federation_perk = all_the_priests_2
+				}
+			}
+		}
+		job_politician_add = @building_static_jobs_low
+	}
+
+	prerequisites = {
+		"tech_avb_bureaucratic_4"
+	}
+
+	upgrades = {
+		"building_avb_bureaucratic_5"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		is_spiritualist = no
+		has_make_spiritualist_perk = no
+	}
+}
+
+building_avb_bureaucratic_5 = {
+	base_buildtime = @avb_b5_time
+	can_build = no
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			is_regular_empire = yes
+			is_spiritualist = no
+			has_make_spiritualist_perk = no
+		}
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+		}
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		owner? = {
+			OR = {
+				is_regular_empire = no
+				is_spiritualist = yes
+				has_make_spiritualist_perk = yes
+			}
+		}
+	}
+
+	convert_to = {
+		building_avb_temple_5
+		building_avb_machine_unity_5
+		building_avb_hive_unity_5
+		building_avb_death_temple_5
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b5_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b5_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b5_upkeep
+			rare_crystals = @avb_b5_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_bureaucrat_bonus_workforce_mult = @avb_unity_workforce_5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner.federation
+			owner = {
+				federation = {
+					has_federation_perk = all_the_priests_2
+				}
+			}
+		}
+		job_politician_add = @building_static_jobs_low
+	}
+
+	prerequisites = {
+		"tech_avb_bureaucratic_5"
+	}
+
+	upgrades = {
+		"building_avb_bureaucratic_6"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		is_spiritualist = no
+		has_make_spiritualist_perk = no
+	}
+}
+
+building_avb_bureaucratic_6 = {
+	base_buildtime = @avb_b6_time
+	can_build = no
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			is_regular_empire = yes
+			is_spiritualist = no
+			has_make_spiritualist_perk = no
+		}
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+		}
+	}
+
+	allow = {
+		has_upgraded_capital_4 = yes
+	}
+
+	destroy_trigger = {
+		owner? = {
+			OR = {
+				is_regular_empire = no
+				is_spiritualist = yes
+				has_make_spiritualist_perk = yes
+			}
+		}
+	}
+
+	convert_to = {
+		building_avb_temple_6
+		building_avb_machine_unity_6
+		building_avb_hive_unity_6
+		building_avb_death_temple_6
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b6_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b6_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b6_upkeep
+			rare_crystals = @avb_b6_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_bureaucrat_bonus_workforce_mult = @avb_unity_workforce_6
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner.federation
+			owner = {
+				federation = {
+					has_federation_perk = all_the_priests_2
+				}
+			}
+		}
+		job_politician_add = @building_static_jobs_low
+	}
+
+	prerequisites = {
+		"tech_avb_bureaucratic_6"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		is_spiritualist = no
+		has_make_spiritualist_perk = no
+	}
+}
+
+building_avb_temple_4 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			OR = {
+				is_spiritualist = yes
+				AND = {
+					is_gestalt = no
+					has_make_spiritualist_perk = yes
+				}
+			}
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				OR = {
+					AND = {
+						is_spiritualist = no
+						has_make_spiritualist_perk = no
+					}
+					is_gestalt = yes
+				}
+			}
+			has_modifier = slave_colony
+		}
+	}
+
+	convert_to = {
+		building_avb_bureaucratic_4
+		building_avb_machine_unity_4
+		building_avb_hive_unity_4
+		building_avb_death_temple_4
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			rare_crystals = @avb_b4_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_ethic_spiritualist_attraction_mult = @avb_unity_attraction_4
+		pop_bureaucrat_bonus_workforce_mult = @avb_unity_workforce_4
+	}
+
+	prerequisites = {
+		"tech_avb_temple_4"
+	}
+
+	upgrades = {
+		"building_avb_temple_5"
+	}
+
+	show_tech_unlock_if = {
+		OR = {
+			is_spiritualist = yes
+			AND = {
+				is_gestalt = no
+				has_make_spiritualist_perk = yes
+			}
+		}
+	}
+}
+
+building_avb_temple_5 = {
+	base_buildtime = @avb_b5_time
+	can_build = no
+	planet_limit = 1
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			OR = {
+				is_spiritualist = yes
+				AND = {
+					is_gestalt = no
+					has_make_spiritualist_perk = yes
+				}
+			}
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				OR = {
+					AND = {
+						is_spiritualist = no
+						has_make_spiritualist_perk = no
+					}
+					is_gestalt = yes
+				}
+			}
+			has_modifier = slave_colony
+		}
+	}
+
+	convert_to = {
+		building_avb_bureaucratic_5
+		building_avb_machine_unity_5
+		building_avb_hive_unity_5
+		building_avb_death_temple_5
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b5_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b5_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b5_upkeep
+			rare_crystals = @avb_b5_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_ethic_spiritualist_attraction_mult = @avb_unity_attraction_5
+		pop_bureaucrat_bonus_workforce_mult = @avb_unity_workforce_5
+	}
+
+	prerequisites = {
+		"tech_avb_temple_5"
+	}
+
+	upgrades = {
+		"building_avb_temple_6"
+	}
+
+	show_tech_unlock_if = {
+		OR = {
+			is_spiritualist = yes
+			AND = {
+				is_gestalt = no
+				has_make_spiritualist_perk = yes
+			}
+		}
+	}
+}
+
+building_avb_temple_6 = {
+	base_buildtime = @avb_b6_time
+	can_build = no
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			OR = {
+				is_spiritualist = yes
+				AND = {
+					is_gestalt = no
+					has_make_spiritualist_perk = yes
+				}
+			}
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				OR = {
+					AND = {
+						is_spiritualist = no
+						has_make_spiritualist_perk = no
+					}
+					is_gestalt = yes
+				}
+			}
+			has_modifier = slave_colony
+		}
+	}
+
+	convert_to = {
+		building_avb_bureaucratic_6
+		building_avb_machine_unity_6
+		building_avb_hive_unity_6
+		building_avb_death_temple_6
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b6_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b6_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b6_upkeep
+			rare_crystals = @avb_b6_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_ethic_spiritualist_attraction_mult = @avb_unity_attraction_6
+		pop_bureaucrat_bonus_workforce_mult = @avb_unity_workforce_6
+	}
+
+	prerequisites = {
+		"tech_avb_temple_6"
+	}
+
+	show_tech_unlock_if = {
+		OR = {
+			is_spiritualist = yes
+			AND = {
+				is_gestalt = no
+				has_make_spiritualist_perk = yes
+			}
+		}
+	}
+}
+
+building_avb_machine_unity_4 = {
+	base_buildtime = @avb_b4_time
+	icon = building_avb_monument_4
+	can_build = no
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			is_machine_empire = yes
+			NOT = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		owner? = {
+			OR = {
+				is_machine_empire = no
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	convert_to = {
+		building_avb_bureaucratic_4
+		building_avb_temple_4
+		building_avb_hive_unity_4
+		building_avb_death_temple_4
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			rare_crystals = @avb_b4_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_coordinator_bonus_workforce_mult = @avb_unity_workforce_4
+	}
+
+	prerequisites = {
+		"tech_avb_bureaucratic_4"
+	}
+
+	upgrades = {
+		building_avb_machine_unity_5
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+		NOT = {
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+}
+
+building_avb_machine_unity_5 = {
+	base_buildtime = @avb_b5_time
+	icon = building_avb_monument_5
+	can_build = no
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			is_machine_empire = yes
+			NOT = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		owner? = {
+			OR = {
+				is_machine_empire = no
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	convert_to = {
+		building_avb_bureaucratic_5
+		building_avb_temple_5
+		building_avb_hive_unity_5
+		building_avb_death_temple_5
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b5_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b5_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b5_upkeep
+			rare_crystals = @avb_b5_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_coordinator_bonus_workforce_mult = @avb_unity_workforce_5
+	}
+
+	prerequisites = {
+		"tech_avb_bureaucratic_5"
+	}
+
+	upgrades = {
+		building_avb_machine_unity_6
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+		NOT = {
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+}
+
+building_avb_machine_unity_6 = {
+	base_buildtime = @avb_b6_time
+	icon = building_avb_monument_6
+	can_build = no
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			is_machine_empire = yes
+			NOT = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	allow = {
+		has_upgraded_capital_4 = yes
+	}
+
+	destroy_trigger = {
+		owner? = {
+			OR = {
+				is_machine_empire = no
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	convert_to = {
+		building_avb_bureaucratic_6
+		building_avb_temple_6
+		building_avb_hive_unity_6
+		building_avb_death_temple_6
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b6_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b6_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b6_upkeep
+			rare_crystals = @avb_b6_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_coordinator_bonus_workforce_mult = @avb_unity_workforce_6
+	}
+
+	prerequisites = {
+		"tech_avb_bureaucratic_6"
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+		NOT = {
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+}
+
+building_avb_hive_unity_4 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			is_hive_empire = yes
+			is_wilderness_empire = no
+		}
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		owner? = {
+			OR = {
+				is_hive_empire = no
+				is_wilderness_empire = yes
+			}
+		}
+	}
+
+	convert_to = {
+		building_avb_bureaucratic_4
+		building_avb_temple_4
+		building_avb_machine_unity_4
+		building_avb_death_temple_4
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			exotic_gases = @avb_b4_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					has_edict = synaptic_reinforcement
+				}
+			}
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		pop_coordinator_bonus_workforce_mult = @avb_unity_workforce_4
+	}
+
+	prerequisites = {
+		"tech_avb_hive_unity_4"
+	}
+
+	upgrades = {
+		"building_avb_hive_unity_5"
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+}
+
+building_avb_hive_unity_5 = {
+	base_buildtime = @avb_b5_time
+	can_build = no
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			is_hive_empire = yes
+			is_wilderness_empire = no
+		}
+	}
+
+	allow = {
+		has_upgraded_capital_4 = yes
+	}
+
+	destroy_trigger = {
+		owner? = {
+			OR = {
+				is_hive_empire = no
+				is_wilderness_empire = yes
+			}
+		}
+	}
+
+	convert_to = {
+		building_avb_bureaucratic_5
+		building_avb_temple_5
+		building_avb_machine_unity_5
+		building_avb_death_temple_5
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b5_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b5_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b5_upkeep
+			exotic_gases = @avb_b5_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					has_edict = synaptic_reinforcement
+				}
+			}
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		pop_coordinator_bonus_workforce_mult = @avb_unity_workforce_5
+	}
+
+	prerequisites = {
+		"tech_avb_hive_unity_5"
+	}
+
+	upgrades = {
+		"building_avb_hive_unity_6"
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+}
+
+building_avb_hive_unity_6 = {
+	base_buildtime = @avb_b6_time
+	can_build = no
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			is_hive_empire = yes
+			is_wilderness_empire = no
+		}
+	}
+
+	allow = {
+		has_upgraded_capital_5 = yes
+	}
+
+	destroy_trigger = {
+		owner? = {
+			OR = {
+				is_hive_empire = no
+				is_wilderness_empire = yes
+			}
+		}
+	}
+
+	convert_to = {
+		building_avb_bureaucratic_6
+		building_avb_temple_6
+		building_avb_machine_unity_6
+		building_avb_death_temple_6
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b6_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b6_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b6_upkeep
+			exotic_gases = @avb_b6_rare_upkeep
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					has_edict = synaptic_reinforcement
+				}
+			}
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		pop_coordinator_bonus_workforce_mult = @avb_unity_workforce_6
+	}
+
+	prerequisites = {
+		"tech_avb_hive_unity_6"
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+}
+
+building_avb_death_temple_4 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	position_priority = 100
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			is_death_cult_empire = yes
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = { }
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_death_cult_empire = no }
+			has_modifier = slave_colony
+		}
+	}
+
+	convert_to = {
+		building_avb_bureaucratic_4
+		building_avb_temple_4
+		building_avb_machine_unity_4
+		building_avb_hive_unity_4
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			exotic_gases = @avb_b4_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_ethic_spiritualist_attraction_mult = @avb_unity_attraction_4
+		pop_mortal_initiate_bonus_workforce_mult = @avb_unity_workforce_4
+	}
+
+	inline_script = {
+		script = jobs/mortal_initiates_add
+		AMOUNT = @avb_b3_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = { always = yes }
+				pop_bureaucrat_bonus_workforce_mult = 0.10
+			}
+		"
+	}
+
+	prerequisites = {
+		"tech_avb_temple_4"
+	}
+
+	upgrades = {
+		"building_avb_death_temple_5"
+	}
+
+	show_tech_unlock_if = {
+		is_death_cult_empire = yes
+	}
+}
+
+building_avb_death_temple_5 = {
+	base_buildtime = @avb_b5_time
+	can_build = no
+	position_priority = 100
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			is_death_cult_empire = yes
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = { }
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_death_cult_empire = no }
+			has_modifier = slave_colony
+		}
+	}
+
+	convert_to = {
+		building_avb_bureaucratic_5
+		building_avb_temple_5
+		building_avb_machine_unity_5
+		building_avb_hive_unity_5
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b5_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b5_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b5_upkeep
+			exotic_gases = @avb_b5_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_ethic_spiritualist_attraction_mult = @avb_unity_attraction_5
+		pop_mortal_initiate_bonus_workforce_mult = @avb_unity_workforce_5
+	}
+
+	inline_script = {
+		script = jobs/mortal_initiates_add
+		AMOUNT = @avb_b4_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = { always = yes }
+				pop_bureaucrat_bonus_workforce_mult = 0.10
+			}
+		"
+	}
+
+	prerequisites = {
+		"tech_avb_temple_5"
+	}
+
+	upgrades = {
+		"building_avb_death_temple_6"
+	}
+
+	show_tech_unlock_if = {
+		is_death_cult_empire = yes
+	}
+}
+
+building_avb_death_temple_6 = {
+	base_buildtime = @avb_b6_time
+	can_build = no
+	position_priority = 100
+	category = unity
+
+	building_sets = {
+		unity
+	}
+
+	potential = {
+		owner? = {
+			is_death_cult_empire = yes
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = { }
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_death_cult_empire = no }
+			has_modifier = slave_colony
+		}
+	}
+
+	convert_to = {
+		building_avb_bureaucratic_6
+		building_avb_temple_6
+		building_avb_machine_unity_6
+		building_avb_hive_unity_6
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b6_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b6_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b6_upkeep
+			exotic_gases = @avb_b6_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		pop_ethic_spiritualist_attraction_mult = @avb_unity_attraction_6
+		pop_mortal_initiate_bonus_workforce_mult = @avb_unity_workforce_6
+	}
+
+	inline_script = {
+		script = jobs/mortal_initiates_add
+		AMOUNT = @avb_b6_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = { always = yes }
+				pop_bureaucrat_bonus_workforce_mult = 0.10
+			}
+		"
+	}
+
+	prerequisites = {
+		"tech_avb_temple_6"
+	}
+
+	show_tech_unlock_if = {
+		is_death_cult_empire = yes
+	}
+}
+
+building_avb_organic_sanctuary_3 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	icon = building_avb_organic_sanctuary_3
+
+	category = unity
+
+	building_sets = {
+		urban
+		unity
+		bio_trophy
+	}
+
+	potential = {
+		owner? = {
+			has_valid_civic = civic_machine_servitor
+			is_hospitality_servitor_empire = no
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		NOT = { owner = { has_valid_civic = civic_machine_servitor } }
+	}
+
+	convert_to = {
+		building_avb_residence_3
+		building_avb_communal_housing_3
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b3_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+			exotic_gases = @avb_b3_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		job_bio_trophy_add = 4500
+	}
+
+	prerequisites = { "tech_avb_residence_3" }
+
+	upgrades = {
+		"building_avb_organic_sanctuary_4"
+	}
+
+	show_tech_unlock_if = {
+		owner = { has_valid_civic = civic_machine_servitor }
+	}
+
+	ai_weight_coefficient = 1.2
+
+	# Here we try to adress the second issue that the AI cant evaluate the pop job output of the bio trophy given the happiness trigger that was put inplace to guard against players exploiting bio trophies
+	#science
+	ai_resource_production = {
+		unity = 20
+		physics_research = 20
+		trigger = {
+			any_owned_pop_group = {
+				is_pop_category = bio_trophy_unemployment
+			}
+			planet_resource_compare = {
+				resource = physics_research
+				value >= 100
+				type = produces
+			}
+		}
+	}
+
+	#alloys
+	ai_resource_production = {
+		unity = 20
+		alloys = 20
+		trigger = {
+			any_owned_pop_group = {
+				is_pop_category = bio_trophy_unemployment
+			}
+			planet_resource_compare = {
+				resource = alloys
+				value >= 100
+				type = produces
+			}
+		}
+	}
+
+	#cgs
+	ai_resource_production = {
+		unity = 20
+		consumer_goods = 20
+		trigger = {
+			any_owned_pop_group = {
+				is_pop_category = bio_trophy_unemployment
+			}
+			planet_resource_compare = {
+				resource = consumer_goods
+				value >= 100
+				type = produces
+			}
+		}
+	}
+}
+
+building_avb_organic_sanctuary_4 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	icon = building_avb_organic_sanctuary_4
+
+	category = unity
+
+	building_sets = {
+		urban
+		unity
+		bio_trophy
+	}
+
+	potential = {
+		owner? = {
+			has_valid_civic = civic_machine_servitor
+			is_hospitality_servitor_empire = no
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		NOT = { owner = { has_valid_civic = civic_machine_servitor } }
+	}
+
+	convert_to = {
+		building_avb_residence_4
+		building_avb_communal_housing_4
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			exotic_gases = @avb_b4_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		job_bio_trophy_add = 6000
+	}
+
+	prerequisites = { "tech_avb_residence_4" }
+
+	upgrades = {
+		"building_avb_organic_sanctuary_5"
+	}
+
+	show_tech_unlock_if = {
+		owner = { has_valid_civic = civic_machine_servitor }
+	}
+
+	ai_weight_coefficient = 1.2
+
+	# Here we try to adress the second issue that the AI cant evaluate the pop job output of the bio trophy given the happiness trigger that was put inplace to guard against players exploiting bio trophies
+	#science
+	ai_resource_production = {
+		unity = 20
+		physics_research = 20
+		trigger = {
+			any_owned_pop_group = {
+				is_pop_category = bio_trophy_unemployment
+			}
+			planet_resource_compare = {
+				resource = physics_research
+				value >= 100
+				type = produces
+			}
+		}
+	}
+
+	#alloys
+	ai_resource_production = {
+		unity = 20
+		alloys = 20
+		trigger = {
+			any_owned_pop_group = {
+				is_pop_category = bio_trophy_unemployment
+			}
+			planet_resource_compare = {
+				resource = alloys
+				value >= 100
+				type = produces
+			}
+		}
+	}
+
+	#cgs
+	ai_resource_production = {
+		unity = 20
+		consumer_goods = 20
+		trigger = {
+			any_owned_pop_group = {
+				is_pop_category = bio_trophy_unemployment
+			}
+			planet_resource_compare = {
+				resource = consumer_goods
+				value >= 100
+				type = produces
+			}
+		}
+	}
+}
+
+building_avb_organic_sanctuary_5 = {
+	base_buildtime = @avb_b5_time
+	can_build = no
+	icon = building_avb_organic_sanctuary_5
+
+	category = unity
+
+	building_sets = {
+		urban
+		unity
+		bio_trophy
+	}
+
+	potential = {
+		owner? = {
+			has_valid_civic = civic_machine_servitor
+			is_hospitality_servitor_empire = no
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		NOT = { owner = { has_valid_civic = civic_machine_servitor } }
+	}
+
+	convert_to = {
+		building_avb_residence_5
+		building_avb_communal_housing_5
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b5_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b5_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b5_upkeep
+			exotic_gases = @avb_b5_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		job_bio_trophy_add = 7500
+	}
+
+	prerequisites = { "tech_avb_residence_5" }
+
+	show_tech_unlock_if = {
+		owner = { has_valid_civic = civic_machine_servitor }
+	}
+
+	ai_weight_coefficient = 1.2
+
+	# Here we try to adress the second issue that the AI cant evaluate the pop job output of the bio trophy given the happiness trigger that was put inplace to guard against players exploiting bio trophies
+	#science
+	ai_resource_production = {
+		unity = 20
+		physics_research = 20
+		trigger = {
+			any_owned_pop_group = {
+				is_pop_category = bio_trophy_unemployment
+			}
+			planet_resource_compare = {
+				resource = physics_research
+				value >= 100
+				type = produces
+			}
+		}
+	}
+
+	#alloys
+	ai_resource_production = {
+		unity = 20
+		alloys = 20
+		trigger = {
+			any_owned_pop_group = {
+				is_pop_category = bio_trophy_unemployment
+			}
+			planet_resource_compare = {
+				resource = alloys
+				value >= 100
+				type = produces
+			}
+		}
+	}
+
+	#cgs
+	ai_resource_production = {
+		unity = 20
+		consumer_goods = 20
+		trigger = {
+			any_owned_pop_group = {
+				is_pop_category = bio_trophy_unemployment
+			}
+			planet_resource_compare = {
+				resource = consumer_goods
+				value >= 100
+				type = produces
+			}
+		}
+	}
+}

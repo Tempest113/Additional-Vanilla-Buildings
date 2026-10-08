@@ -1,0 +1,84 @@
+@avb_b2_time = 540
+@avb_b2_minerals = 600
+@avb_b2_upkeep = 3
+@avb_b2_jobs = 400
+@avb_b2_rare_cost = 60
+@avb_b2_rare_upkeep = 1.25
+
+@avb_b3_time = 720
+@avb_b3_minerals = 900
+@avb_b3_upkeep = 7.5
+@avb_b3_jobs = 600
+@avb_b3_rare_cost = 75
+@avb_b3_rare_upkeep = 1.5
+
+@avb_b4_time = 900
+@avb_b4_minerals = 1200
+@avb_b4_upkeep = 12
+@avb_b4_jobs = 800
+@avb_b4_rare_cost = 150
+@avb_b4_rare_upkeep = 3
+
+@avb_b5_time = 1350
+@avb_b5_minerals = 3000
+@avb_b5_upkeep = 15
+@avb_b5_jobs = 1000
+@avb_b5_rare_cost = 300
+@avb_b5_rare_upkeep = 6
+
+@avb_b6_time = 2025
+@avb_b6_minerals = 4500
+@avb_b6_rare_cost = 450
+@avb_b6_rare_upkeep = 9
+@avb_b6_upkeep = 22.5
+@avb_b6_jobs = 1200
+@avb_b7_minerals = 6750
+@avb_b7_rare_cost = 675
+@avb_b7_rare_upkeep = 13.5
+
+
+
+@avb_jobs_3 = 300
+@avb_jobs_5 = 500
+@avb_jobs_7 = 700
+@avb_unity_workforce_4 = 0.13
+@avb_unity_workforce_5 = 0.17
+@avb_unity_workforce_6 = 0.2
+@avb_unity_attraction_4 = 0.2
+@avb_unity_attraction_5 = 0.25
+@avb_unity_attraction_6 = 0.3
+
+@avb_fe_sr_cost_1 = 450
+
+@avb_fe_alloy_cost_1 = 2250
+@avb_fe_alloy_cost_2 = 3750
+
+
+
+@has_avb_mod = 1
+
+
+@building_medical_4_environment_tolerance = 0.15
+@building_medical_4_organics_upkeep = -0.03
+@building_medical_5_environment_tolerance = 0.2
+@building_medical_5_organics_upkeep = -0.035
+
+@avb_b2_biomass = 150
+@avb_b3_biomass = 300
+@avb_b4_biomass = 600
+@avb_b5_biomass = 1200
+@avb_b6_biomass = 1800
+@avb_b7_biomass = 2700
+
+
+@tier_3_capital_defense_armies = 8
+@tier_4_capital_defense_armies = 16
+@tier_5_capital_defense_armies = 24
+@tier_6_capital_defense_armies = 32
+@tier_7_capital_defense_armies = 40
+
+@capital_t4_min_pops = 8000
+@capital_t5_min_pops = 12000
+@capital_t6_min_pops = 18000
+
+@nomadic_minerals_to_dark_matter = 0.05

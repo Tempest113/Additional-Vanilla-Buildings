@@ -1,0 +1,477 @@
+############
+# Capital buildings
+#############
+building_system_capital = {
+	base_buildtime = @b4_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	capital_tier = 4
+
+	category = government
+
+	building_sets = {
+		government
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			is_fallen_empire = no
+		}
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
+	}
+
+	convert_to = {
+		building_hive_major_capital
+		building_machine_major_capital
+		building_major_capital
+		building_resort_major_capital
+		building_slave_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+		building_major_capital_wilderness
+	}
+
+	allow = {
+		sapient_pop_amount >= 5000
+	}
+
+	prerequisites = {
+		"tech_galactic_administration"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+
+	planet_modifier = {
+		planet_housing_add = 2000
+		planet_amenities_add = 2000
+		branch_office_target_max_buildings_add = 4
+		planet_defense_armies_add = @tier_4_capital_defense_armies
+	}
+
+	inline_script = {
+		script = buildings/on_all_capital_buildings
+	}
+
+	inline_script = {
+		script = buildings/regular_empire_capital_jobs
+		AMOUNT = 400
+	}
+
+	inline_script = {
+		script = jobs/enforcers_add
+		AMOUNT = 300
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @b4_upkeep
+		}
+	}
+
+	upgrades = {
+		"building_avb_capital_4"
+		"building_imperial_capital"
+	}
+
+	additional_ai_weight = 100
+}
+
+#############
+# Hive buildings
+#############
+# Hive Nexus
+building_hive_major_capital = {
+	base_buildtime = @b2_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	capital_tier = 3
+
+	category = government
+
+	building_sets = {
+		government
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_hive_empire = yes
+				is_country_type = swarm
+			}
+			is_fallen_empire = no
+			is_wilderness_empire = no
+		}
+	}
+
+	convert_to = {
+		building_machine_major_capital
+		building_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+		building_major_capital_wilderness
+	}
+
+	upgrades = {
+		"building_avb_hive_capital_3"
+		"building_imperial_hive_capital"
+	}
+
+	allow = {
+		sapient_pop_amount >= 2500
+	}
+
+	prerequisites = {
+		"tech_colonial_centralization"
+	}
+
+	show_tech_unlock_if = {
+		is_hive_empire = yes
+		is_wilderness_empire = no
+	}
+
+	planet_modifier = {
+		planet_housing_add = 2000
+		planet_amenities_add = 2000
+		job_coordinator_add = 300
+		job_logistics_drone_add = 500
+		job_patrol_drone_add = 200
+		planet_defense_armies_add = @tier_3_capital_defense_armies
+	}
+
+	inline_script = {
+		script = buildings/on_all_capital_buildings
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @b2_upkeep
+		}
+	}
+
+	additional_ai_weight = 100
+}
+
+#############
+# Machine buildings
+#############
+# Primary Nexus
+building_machine_system_capital = {
+	base_buildtime = @b4_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	capital_tier = 4
+
+	category = government
+
+	building_sets = {
+		government
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+			}
+			is_fallen_empire = no
+		}
+	}
+
+	convert_to = {
+		building_hive_major_capital
+		building_major_capital
+		building_machine_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+		building_major_capital_wilderness
+	}
+
+	allow = {
+		sapient_pop_amount >= 5000
+	}
+
+	prerequisites = {
+		"tech_galactic_administration"
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+	}
+
+	planet_modifier = {
+		planet_housing_add = 2000
+		planet_amenities_add = 2000
+		job_replicator_add = 200
+		job_coordinator_add = 400
+		job_patrol_drone_add = 300
+		job_logistics_drone_add = 500
+		planet_defense_armies_add = @tier_4_capital_defense_armies
+	}
+
+	inline_script = {
+		script = buildings/on_all_capital_buildings
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			sapient_pop_amount >= 1000
+		}
+		modifier = {
+			job_replicator_add = 100
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			sapient_pop_amount >= 4000
+		}
+		modifier = {
+			job_replicator_add = 100
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_machine_assimilator }
+		}
+		modifier = {
+			job_replicator_add = -100
+			job_logistics_drone_add = 100
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_modifier = shroud_forged_physician_modifier }
+		}
+		modifier = {
+			job_physician_drone_add = 100
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @b4_upkeep
+		}
+	}
+
+	upgrades = {
+		"building_avb_machine_capital_4"
+		"building_imperial_machine_capital"
+	}
+
+	additional_ai_weight = 100
+}
+
+#############
+# Special
+#############
+# Resort Governing Complex
+building_resort_major_capital = {
+	base_buildtime = @b2_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	capital_tier = 3
+
+	icon = building_major_capital
+
+	category = government
+
+	building_sets = {
+		government
+	}
+
+	potential = {
+		has_modifier = resort_colony
+	}
+
+	convert_to = {
+		building_hive_major_capital
+		building_machine_major_capital
+		building_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+		building_major_capital_wilderness
+	}
+
+	allow = {
+		sapient_pop_amount >= 2000
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @b2_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 1000
+		planet_amenities_add = 1000
+		job_resort_worker_add = 200
+		branch_office_target_max_buildings_add = 2
+	}
+
+	inline_script = {
+		script = buildings/on_all_capital_buildings
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_active_tradition = tr_synthetics_prefabricated_components }
+		}
+		job_roboticist_add = 100
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_private_healthcare_corporate }
+		}
+		job_healthcare_add = 100
+	}
+
+	inline_script = {
+		script = "jobs/politician_add"
+		AMOUNT = @building_static_jobs
+	}
+
+	upgrades = {
+		"building_avb_resort_capital_3"
+	}
+
+	additional_ai_weight = 100
+}
+
+# Thrall-World Major Capital
+building_slave_major_capital = {
+	base_buildtime = @b2_time
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	position_priority = 0
+	capital_tier = 3
+
+	icon = building_major_capital
+
+	category = government
+
+	building_sets = {
+		government
+	}
+
+	potential = {
+		has_modifier = slave_colony
+	}
+
+	allow = {
+		sapient_pop_amount >= 2000
+	}
+
+	convert_to = {
+		building_hive_major_capital
+		building_machine_major_capital
+		building_major_capital
+		building_ancient_control_center
+		building_ancient_palace
+		building_major_capital_wilderness
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = 500
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 1000
+		planet_amenities_add = 1000
+		job_slave_overseer_add = 400
+		planet_stability_add = 10
+		branch_office_target_max_buildings_add = 2
+	}
+
+	inline_script = {
+		script = buildings/on_all_capital_buildings
+	}
+
+	inline_script = {
+		script = "jobs/politician_add"
+		AMOUNT = @building_static_jobs
+	}
+
+	upgrades = {
+		"building_avb_slave_capital_3"
+	}
+
+	additional_ai_weight = 100
+}

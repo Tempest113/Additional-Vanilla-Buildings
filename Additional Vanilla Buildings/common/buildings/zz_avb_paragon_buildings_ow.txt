@@ -1,0 +1,167 @@
+# Overrides of vanilla building keys (adds `upgrades` for the AVB tiers in avb_paragon_buildings.txt).
+# Kept in a zz_ file so they load after other mods that override the same keys.
+# Keep these in sync with vanilla: python tools/check_vanilla_drift.py
+#####################
+# Galactic Paragons Buildings
+#####################
+
+building_paragon_memory_vaults = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+	category = unity
+	can_demolish = yes
+	can_be_ruined = yes
+	can_be_disabled = yes
+	is_essential = yes
+	empire_limit = 1
+
+	building_sets = {
+		government
+		urban
+		unity
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_memory_vault_empire = no
+		}
+	}
+
+	desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				OR = {
+					has_civic = civic_memory_vault
+					has_civic = civic_memory_vault_corporate
+				}
+			}
+		}
+		text = building_paragon_memory_vaults_desc
+	}
+
+	desc = {
+		trigger = {
+			exists = owner
+			owner = { has_civic = civic_memory_vault_machine }
+		}
+		text = building_paragon_memory_vaults_machine_desc
+	}
+
+	desc = {
+		trigger = {
+			exists = owner
+			owner = { has_civic = civic_memory_vault_hive }
+		}
+		text = building_paragon_memory_vaults_hive_desc
+	}
+
+	triggered_desc = {
+		text = memory_vault_tooltip
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+		hidden_trigger = {
+			owner = {
+				OR = {
+					is_ai = no
+					resource_stockpile_compare = { resource = minerals value >= 800 }
+				}
+			}
+		}
+	}
+
+	potential = {
+		custom_tooltip = {
+			text = EMPIRE_UNIQUE_BUILDING
+			owner = { is_memory_vault_empire = yes }
+		}
+		exists = planet
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_wilderness_empire = yes
+				}
+			}
+			biomass = 200
+		}
+		upkeep = {
+			energy = @b2_upkeep
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { has_civic = civic_memory_vault_corporate }
+				owner = { is_variable_set = paragon_memory_vault }
+			}
+			energy = @b2_upkeep
+			multiplier = owner.paragon_memory_vault
+		}
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_memory_vault_empire = yes
+			}
+		}
+		species_leader_exp_gain = 0.01
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_memory_vault_empire = yes
+				is_variable_set = paragon_memory_vault
+			}
+		}
+		species_leader_exp_gain = 0.01
+		mult = owner.paragon_memory_vault
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_memory_vault_empire = yes
+			}
+		}
+		country_unity_produces_mult = 0.01
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_memory_vault_empire = yes
+				is_variable_set = paragon_memory_vault
+			}
+		}
+		country_unity_produces_mult = 0.01
+		mult = owner.paragon_memory_vault
+	}
+
+	inline_script = {
+		script = buildings/on_all_wilderness_buildings_districts
+	}
+
+	upgrades = {
+		"building_avb_paragon_memory_vaults_2"
+	}
+}

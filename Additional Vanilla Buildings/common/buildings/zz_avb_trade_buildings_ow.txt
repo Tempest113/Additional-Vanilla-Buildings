@@ -1,0 +1,292 @@
+#############
+# Trade buildings
+#############
+###############
+# COMMERCIALS
+###############
+building_commercial_zone = {
+	base_buildtime = @b1_time
+	exempt_from_ai_planet_specialization = no
+	category = trade
+
+	building_sets = {
+		urban
+		trade
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+		}
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+		NOT = { has_building = building_low_tech_capital }
+		OR = {
+			has_carrier_flag = ignore_ai_building_limitations
+			owner = {
+				is_ai = no
+			}
+			# AI is allowed to build one of these unless they're a megacorp or this is a trade planet
+			owner = {
+				is_megacorp = yes
+			}
+			has_any_trade_zone = yes
+			NOR = {
+				has_building = building_commercial_zone
+				has_building = building_commercial_megaplex
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	allow = { }
+
+	convert_to = {
+		building_maintenance_depot
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b1_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	inline_script = {
+		script = jobs/trader_add
+		AMOUNT = @building_static_jobs
+	}
+
+	prerequisites = {
+		"tech_interplanetary_commerce"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+
+	upgrades = {
+		building_avb_commercial_2
+	}
+}
+
+building_commercial_megaplex = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+	category = trade
+
+	building_sets = {
+		trade
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+		}
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	allow = { }
+
+	inline_script = {
+		script = jobs/trader_add
+		AMOUNT = @building_static_jobs
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_traders_upkeep_mult = -0.10
+	}
+
+	prerequisites = {
+		"tech_interstellar_economics"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+
+	ai_resource_production = {
+		energy = 6
+		trigger = {
+			OR = {
+				num_unemployed >= 1000
+				num_assigned_jobs = {
+					job = servant
+					value >= 1000
+				}
+			}
+		}
+	}
+
+	upgrades = {
+		building_avb_commercial_megaplex_2
+	}
+}
+
+##########################
+# GALACTIC STOCK EXCHANGE
+##########################
+
+building_galactic_stock_exchange = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+	category = trade
+
+	building_sets = {
+		trade
+	}
+
+	potential = {
+		owner? = {
+			is_regular_empire = yes
+		}
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	allow = {
+		orbital_ring_and_arkship_equivalent_absent = {
+			RING = ring_galactic_stock_exchange
+			ARKSHIP = arkship_galactic_stock_exchange
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	planet_modifier = {
+		pop_trader_bonus_workforce_mult = 0.15
+	}
+
+	country_modifier = {
+		country_trade_fee = -0.05
+	}
+
+	inline_script = {
+		script = jobs/trader_add
+		AMOUNT = @building_static_jobs
+	}
+
+	inline_script = {
+		script = "jobs/politician_add_from_civic"
+		AMOUNT = @building_static_jobs
+		CIVIC = civic_merchant_guilds
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_galactic_markets"
+	}
+
+	ai_resource_production = {
+		trade = 10
+	}
+
+	upgrades = {
+		building_avb_galactic_stock_exchange_2
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_politician
+		toggle = @has_bug_branch
+		CIVIC = civic_bugged_banking_corporation
+		AMOUNT = @building_static_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_politician
+		toggle = @has_bug_branch
+		CIVIC = civic_bugged_board_of_executives
+		AMOUNT = @building_static_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_politician
+		toggle = @has_bug_branch
+		CIVIC = civic_bugged_stock_based_salary
+		AMOUNT = @building_static_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_politician
+		toggle = @has_bug_branch
+		CIVIC = civic_bugged_state_monopoly
+		AMOUNT = @building_static_jobs
+	}
+}

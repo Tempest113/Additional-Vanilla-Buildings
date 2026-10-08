@@ -1,0 +1,972 @@
+tech_avb_posthumous_employment_center_2 = {
+	cost = @tier4cost1
+	area = society
+	tier = 4
+	category = { biology }
+	prerequisites = { "tech_avb_capital_4" }
+	weight = @tier4weight1
+	icon = tech_avb_posthumous_employment_center_2
+
+	potential = {
+		has_valid_civic = civic_permanent_employment
+	}
+
+	weight_modifier = { }
+
+	ai_weight = { }
+}
+
+tech_avb_offspring_nest_2 = {
+	cost = @tier4cost1
+	area = society
+	tier = 4
+	category = { biology }
+	prerequisites = { "tech_avb_capital_4" }
+	weight = @tier4weight1
+	icon = tech_avb_offspring_nest_2
+
+	potential = {
+		has_origin = origin_progenitor_hive
+	}
+
+	weight_modifier = { }
+
+	ai_weight = { }
+}
+
+tech_avb_toxic_bath_2 = {
+	cost = @tier4cost1
+	area = society
+	tier = 4
+	category = { biology }
+	prerequisites = { "tech_avb_capital_4" }
+	weight = @tier4weight1
+	icon = tech_avb_toxic_bath_2
+
+	potential = {
+		is_gestalt = no
+		is_individual_machine = no
+		is_toxic_baths_empire = yes
+	}
+
+	weight_modifier = { }
+
+	ai_weight = { }
+}
+
+tech_avb_toxic_bath_hive_2 = {
+	cost = @tier4cost1
+	area = society
+	tier = 4
+	category = { biology }
+	prerequisites = { "tech_avb_capital_4" }
+	weight = @tier4weight1
+	icon = tech_avb_toxic_bath_hive_2
+
+	potential = {
+		is_hive_empire = yes
+		is_toxic_baths_empire = yes
+	}
+
+	weight_modifier = { }
+
+	ai_weight = { }
+}
+
+tech_avb_toxic_bath_machine_2 = {
+	cost = @tier4cost1
+	area = society
+	tier = 4
+	category = { biology }
+	prerequisites = { "tech_avb_capital_4" }
+	weight = @tier4weight1
+	icon = tech_avb_toxic_bath_machine_2
+
+	potential = {
+		OR = {
+			is_individual_machine = yes
+			is_machine_empire = yes
+		}
+		is_toxic_baths_empire = yes
+	}
+
+	weight_modifier = { }
+
+	ai_weight = { }
+}
+
+tech_avb_archaeo_refinery_2 = {
+	cost = @tier4cost3
+	area = society
+	tier = 4
+	category = { archaeostudies }
+	is_rare = yes
+	prerequisites = { "tech_archaeo_refinery" }
+	weight = @tier4weight3
+
+	potential = {
+		has_ancrel = yes
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 9
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = 2
+			has_ascension_perk = ap_archaeoengineers
+		}
+	}
+}
+
+tech_avb_baol_organic_plant_2 = {
+	cost = @tier5cost1
+	area = society
+	tier = 5
+	category = { archaeostudies }
+	is_rare = yes
+	prerequisites = { tech_secrets_baol }
+	weight = 5
+
+	potential = {
+		has_ancrel = yes
+	}
+
+	weight_modifier = { }
+}
+
+tech_avb_archaeostudies_faculty_2 = {
+	cost = @tier4cost1
+	area = society
+	tier = 4
+	category = { archaeostudies }
+	is_rare = yes
+	prerequisites = { tech_archaeostudies }
+	weight = @tier4weight3
+
+	potential = {
+		has_ancrel = yes
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 9
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = 0.3
+			count_archaeological_site = {
+				count < 3
+				limit = {
+					is_site_completed = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_country_flag = origin_shoulders_closure
+				has_completed_precursor_research = yes
+			}
+		}
+	}
+}
+
+tech_avb_vultaum_reality_computer_2 = {
+	cost = @tier5cost1
+	area = society
+	tier = 5
+	category = { archaeostudies }
+	is_rare = yes
+	prerequisites = { tech_secrets_vultaum }
+	weight = 5
+
+	potential = {
+		has_ancrel = yes
+	}
+
+	weight_modifier = { }
+}
+
+tech_avb_league_offices_2 = {
+	cost = @tier5cost1
+	area = society
+	tier = 5
+	category = { archaeostudies }
+	is_rare = yes
+	prerequisites = { tech_secrets_league }
+	weight = 5
+
+	potential = {
+		has_ancrel = yes
+	}
+
+	weight_modifier = { }
+}
+
+tech_avb_transcendent_faith_2 = {
+	cost = @tier5cost2
+	area = society
+	tier = 5
+	category = { statecraft }
+	prerequisites = { "tech_transcendent_faith" }
+	weight = @tier5weight2
+
+	potential = {
+		OR = {
+			has_ethic = ethic_spiritualist
+			has_ethic = ethic_fanatic_spiritualist
+			AND = {
+				is_gestalt = no
+				has_make_spiritualist_perk = yes
+			}
+		}
+	}
+
+	weight_modifier = { }
+
+	ai_weight = { }
+}
+
+tech_avb_autocurating_vault_2 = {
+	cost = @tier4cost1
+	area = society
+	tier = 4
+	category = { statecraft }
+	prerequisites = { "tech_autocurating_vault" "tech_avb_capital_4" }
+	weight = @tier4weight1
+
+	potential = {
+		NOR = {
+			has_ethic = ethic_spiritualist
+			has_ethic = ethic_fanatic_spiritualist
+			has_valid_civic = civic_machine_servitor
+		}
+	}
+
+	weight_modifier = { }
+
+	ai_weight = { }
+}
+
+tech_avb_xeno_relations_2 = {
+	cost = @tier4cost2
+	area = society
+	tier = 4
+	category = { statecraft }
+	prerequisites = { "tech_xeno_relations" "tech_avb_capital_5" }
+	weight = @tier4weight1
+
+	potential = {
+		is_regular_empire = yes
+	}
+
+	## unlock embassy building upgrade
+
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			has_ethic = ethic_xenophile
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_fanatic_xenophile
+		}
+		modifier = {
+			factor = 2
+			is_galactic_community_member = yes
+		}
+		modifier = {
+			factor = 0.01
+			has_civic = civic_inwards_perfection
+		}
+	}
+
+	modifier = {
+		diplo_weight_mult = 0.1
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			has_ethic = ethic_xenophile
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_fanatic_xenophile
+		}
+		modifier = {
+			factor = 0.01
+			has_civic = civic_inwards_perfection
+		}
+	}
+}
+
+tech_avb_paragon_memory_vaults_2 = {
+	cost = @tier3cost1
+	area = society
+	tier = 3
+	category = { statecraft }
+	is_rare = yes
+	prerequisites = { "tech_galactic_administration" }
+	weight = 5
+
+	potential = {
+		has_paragon_dlc = yes
+		is_memory_vault_empire = yes
+	}
+
+	weight_modifier = { }
+}
+
+tech_avb_clone_army_vats_2 = {
+	cost = @avbtier7cost2
+	area = society
+	tier = 6
+	category = { biology }
+	is_rare = yes
+
+	prerequisites = {
+		"tech_gene_tailoring"
+		"tech_morphogenetic_field_mastery"
+	}
+
+	weight = 5
+	icon = tech_clone_soldier_fertility
+
+	potential = {
+		has_origin = origin_clone_army
+		has_country_flag = clone_army_full_potential
+	}
+
+	weight_modifier = {
+		factor = 1.5 # genetech needs to be a bit more common
+		modifier = {
+			factor = 2
+			has_relic = r_pox_sample
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+	}
+}
+
+tech_avb_hydroponics_3 = {
+	cost = @avbtier6cost1
+	area = society
+	tier = 6
+	category = { biology }
+	prerequisites = { "tech_avb_hydroponics_2" }
+	weight = @avbtier6weight1
+
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 0.01
+			is_machine_empire = yes
+			NOR = {
+				has_valid_civic = civic_machine_servitor
+				has_valid_civic = civic_machine_assimilator
+				any_owned_planet = {
+					num_districts = { type = district_farming value > 0 }
+				}
+			}
+		}
+	}
+
+	ai_weight = { }
+}
+
+tech_avb_necrophage_3 = {
+	cost = @tier4cost3
+	area = society
+	tier = 4
+	category = { biology }
+	prerequisites = { "tech_glandular_acclimation" }
+	weight = @tier4weight3
+
+	potential = {
+		always = no
+		has_origin = origin_necrophage
+		has_trait = trait_necrophage
+	}
+
+	weight_modifier = {
+		factor = 1.5 # genetech needs to be a bit more common
+		modifier = {
+			factor = 1.25
+			has_authority = auth_hive_mind
+		}
+		modifier = {
+			factor = 1.25
+			has_origin = origin_necrophage
+			has_trait = trait_necrophage
+		}
+		modifier = {
+			factor = 2
+			has_relic = r_pox_sample
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 2
+			has_origin = origin_necrophage
+			has_trait = trait_necrophage
+		}
+	}
+}
+
+# Lathe Buildings
+tech_avb_lathe_resonator_2 = {
+	cost = @avbtier6cost1
+	area = physics
+	tier = 6
+	category = { computing }
+	is_rare = yes
+
+	prerequisites = {
+		tech_lathe_resonator
+	}
+
+	weight = @avbtier6weight1
+
+	potential = {
+		has_machine_age_dlc = yes
+		has_ascension_perk = ap_cosmogenesis
+		has_technology = tech_cosmogenesis_world
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					is_planet_class = pc_cosmogenesis_world
+				}
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 5000
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 10000
+			}
+		}
+	}
+}
+
+tech_avb_lathe_reactor_2 = {
+	cost = @avbtier6cost1
+	area = physics
+	tier = 6
+	category = { computing }
+	is_rare = yes
+
+	prerequisites = {
+		tech_cosmogenesis_world
+	}
+
+	weight = @avbtier6weight1
+
+	potential = {
+		has_machine_age_dlc = yes
+		has_ascension_perk = ap_cosmogenesis
+		has_technology = tech_cosmogenesis_world
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					is_planet_class = pc_cosmogenesis_world
+				}
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 5000
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 10000
+			}
+		}
+	}
+}
+
+tech_avb_lathe_stabilisator_2 = {
+	cost = @avbtier6cost1
+	area = physics
+	tier = 6
+	category = { computing }
+	is_rare = yes
+
+	prerequisites = {
+		tech_cosmogenesis_world
+	}
+
+	weight = @avbtier6weight1
+
+	potential = {
+		has_machine_age_dlc = yes
+		has_ascension_perk = ap_cosmogenesis
+		has_technology = tech_cosmogenesis_world
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					is_planet_class = pc_cosmogenesis_world
+				}
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 5000
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 10000
+			}
+		}
+	}
+}
+
+tech_avb_lathe_overclocker_2 = {
+	cost = @avbtier6cost1
+	area = physics
+	tier = 6
+	category = { computing }
+	is_rare = yes
+
+	prerequisites = {
+		tech_lathe_overclocker
+	}
+
+	weight = @avbtier6weight1
+
+	potential = {
+		has_machine_age_dlc = yes
+		has_ascension_perk = ap_cosmogenesis
+		has_technology = tech_cosmogenesis_world
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					is_planet_class = pc_cosmogenesis_world
+				}
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 5000
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 10000
+			}
+		}
+	}
+}
+
+tech_avb_lathe_preserver_2 = {
+	cost = @avbtier6cost1
+	area = society
+	tier = 6
+	category = { biology }
+	is_rare = yes
+
+	prerequisites = {
+		tech_lathe_preserver
+	}
+
+	weight = @avbtier6weight1
+
+	potential = {
+		has_machine_age_dlc = yes
+		has_ascension_perk = ap_cosmogenesis
+		has_technology = tech_cosmogenesis_world
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					is_planet_class = pc_cosmogenesis_world
+				}
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 5000
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 10000
+			}
+		}
+	}
+}
+
+tech_avb_lathe_life_support_2 = {
+	cost = @avbtier6cost1
+	area = society
+	tier = 6
+	category = { biology }
+	is_rare = yes
+
+	prerequisites = {
+		tech_lathe_life_support
+	}
+
+	weight = @avbtier6weight1
+
+	potential = {
+		has_machine_age_dlc = yes
+		has_ascension_perk = ap_cosmogenesis
+		has_technology = tech_cosmogenesis_world
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					is_planet_class = pc_cosmogenesis_world
+				}
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 5000
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 10000
+			}
+		}
+	}
+}
+
+tech_avb_lathe_cogitator_2 = {
+	cost = @avbtier6cost1
+	area = society
+	tier = 6
+	category = { military_theory }
+	is_rare = yes
+
+	prerequisites = {
+		tech_lathe_cogitator
+	}
+
+	weight = @avbtier6weight1
+
+	potential = {
+		has_machine_age_dlc = yes
+		has_ascension_perk = ap_cosmogenesis
+		has_technology = tech_cosmogenesis_world
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					is_planet_class = pc_cosmogenesis_world
+				}
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 5000
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 10000
+			}
+		}
+	}
+}
+
+tech_avb_lathe_validator_2 = {
+	cost = @avbtier6cost1
+	area = physics
+	tier = 6
+	category = { computing }
+	is_rare = yes
+
+	prerequisites = {
+		tech_lathe_validator
+	}
+
+	weight = @avbtier6weight1
+
+	potential = {
+		has_machine_age_dlc = yes
+		has_ascension_perk = ap_cosmogenesis
+		has_technology = tech_cosmogenesis_world
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					is_planet_class = pc_cosmogenesis_world
+				}
+				has_ascension_perk = ap_cosmogenesis
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 5000
+			}
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_cosmogenesis_world
+				pop_amount >= 10000
+			}
+		}
+	}
+}
+
+# Nanomachine buildings
+tech_avb_nanolab_3 = {
+	cost = @tier4cost1
+	area = physics
+	tier = 4
+
+	category = {
+		computing
+	}
+
+	weight = @tier4weight1
+
+	potential = {
+		has_machine_age_dlc = yes
+		owner = {
+			has_tradition = tr_nanotech_finish
+		}
+	}
+
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.5
+			is_specialist_subject_type = { TYPE = scholarium }
+		}
+	}
+
+	ai_weight = {
+		factor = @ai_research_lab_factor
+	}
+}
+
+tech_avb_nanotech_cauldron_2 = {
+	cost = @tier4cost1
+	area = engineering
+	tier = 4
+
+	category = {
+		industry
+	}
+
+	weight = @tier4weight1
+
+	potential = {
+		has_machine_age_dlc = yes
+		owner = {
+			has_tradition = tr_nanotech_finish
+		}
+	}
+
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.5
+			is_specialist_subject_type = { TYPE = bulwark }
+		}
+	}
+
+	ai_weight = {
+		factor = @ai_research_lab_factor
+	}
+}
+
+tech_avb_nanotech_mining = {
+	cost = @tier3cost1
+	area = engineering
+	tier = 3
+
+	category = {
+		industry
+	}
+
+	weight = @tier3weight1
+
+	potential = {
+		has_machine_age_dlc = yes
+		owner = {
+			has_tradition = tr_nanotech_1
+		}
+	}
+
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.5
+			is_specialist_subject_type = { TYPE = bulwark }
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_nanotech
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = @ai_research_lab_factor
+	}
+}
+
+tech_avb_nanotech_mining_2 = {
+	cost = @tier4cost1
+	area = engineering
+	tier = 4
+
+	category = {
+		industry
+	}
+
+	prerequisites = {
+		tech_avb_nanotech_mining
+	}
+
+	weight = @tier3weight1
+
+	potential = {
+		has_machine_age_dlc = yes
+		owner = {
+			has_tradition = tr_nanotech_1
+		}
+	}
+
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.5
+			is_specialist_subject_type = { TYPE = bulwark }
+		}
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_nanotech
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = @ai_research_lab_factor
+	}
+}
+
+# Natural Design
+tech_avb_transcendental_retreat_2 = {
+	cost = @tier3cost1
+	area = society
+	tier = 3
+
+	category = {
+		biology
+	}
+
+	is_rare = yes
+
+	prerequisites = {
+		"tech_avb_capital_4"
+	}
+
+	weight = @tier3weight1
+
+	potential = {
+		is_wilderness_empire = no
+		is_natural_design_empire = yes
+	}
+
+	modifier = {
+		bonus_pop_growth_mult = 0.1
+	}
+}

@@ -1,0 +1,605 @@
+building_avb_automation_3 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	category = pop_assembly
+
+	building_sets = {
+		government
+		urban
+		farming
+		mining
+		generator
+	}
+
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	destroy_trigger = { }
+
+	planet_modifier = {
+		district_automated_workforce = 0.75
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b3_rare_cost
+			exotic_gases = @avb_b3_rare_cost
+			volatile_motes = @avb_b3_rare_cost
+		}
+		upkeep = {
+			energy = @b4_upkeep
+			rare_crystals = @avb_b3_rare_upkeep
+			exotic_gases = @avb_b3_rare_upkeep
+			volatile_motes = @avb_b3_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		tech_avb_construction_templates_3
+	}
+
+	upgrades = {
+		building_avb_automation_4
+	}
+
+	show_tech_unlock_if = {
+		is_tankbound_empire = no
+		is_wilderness_empire = no
+	}
+
+	triggered_desc = {
+		text = avb_automation_3_tooltip
+	}
+}
+
+building_avb_automation_4 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	category = pop_assembly
+
+	building_sets = {
+		government
+		urban
+		farming
+		mining
+		generator
+	}
+
+	potential = {
+		always = no
+	}
+
+	allow = {
+		always = no
+	}
+
+	destroy_trigger = { }
+
+	planet_modifier = {
+		district_automated_workforce = 1
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = sr_dark_matter
+			COST = @avb_b5_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_dark_matter
+		}
+		cost = {
+			sr_dark_matter = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @b4_upkeep
+			sr_dark_matter = @avb_b4_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		tech_avb_construction_templates_4
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+		is_tankbound_empire = no
+	}
+
+	triggered_desc = {
+		text = avb_automation_4_tooltip
+	}
+}
+
+building_avb_automation_technician_3 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	category = pop_assembly
+	icon = building_avb_automation_3
+
+	building_sets = {
+		generator_automation
+	}
+
+	potential = {
+		owner = {
+			is_wilderness_empire = no
+			is_tankbound_empire = no
+		}
+	}
+
+	allow = {
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				NAND = {
+					free_district_slots = 0
+					free_building_slots <= 1
+					free_housing <= 0
+					free_jobs <= 0
+				}
+			}
+		}
+	}
+
+	destroy_trigger = {
+		owner = {
+			OR = {
+				is_wilderness_empire = yes
+				is_tankbound_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_technician_automated_workforce_mult = 0.75
+		job_technician_drone_automated_workforce_mult = 0.75
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b3_rare_cost
+			exotic_gases = @avb_b3_rare_cost
+			volatile_motes = @avb_b3_rare_cost
+		}
+		upkeep = {
+			energy = @b4_upkeep
+			rare_crystals = @avb_b3_rare_upkeep
+			exotic_gases = @avb_b3_rare_upkeep
+			volatile_motes = @avb_b3_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		tech_avb_construction_templates_3
+	}
+
+	triggered_desc = {
+		text = avb_automation_3_tooltip
+	}
+
+	upgrades = {
+		building_avb_automation_technician_4
+	}
+
+	show_tech_unlock_if = {
+		always = no
+	}
+}
+
+building_avb_automation_technician_4 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	category = pop_assembly
+	icon = building_avb_automation_4
+
+	building_sets = {
+		generator_automation
+	}
+
+	potential = {
+		owner = {
+			is_wilderness_empire = no
+			is_tankbound_empire = no
+		}
+	}
+
+	allow = {
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				NAND = {
+					free_district_slots = 0
+					free_building_slots <= 1
+					free_housing <= 0
+					free_jobs <= 0
+				}
+			}
+		}
+	}
+
+	destroy_trigger = {
+		owner = {
+			OR = {
+				is_wilderness_empire = yes
+				is_tankbound_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_technician_automated_workforce_mult = 1
+		job_technician_drone_automated_workforce_mult = 1
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = sr_dark_matter
+			COST = @avb_b5_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_dark_matter
+		}
+		cost = {
+			sr_dark_matter = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @b4_upkeep
+			sr_dark_matter = @avb_b4_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		tech_avb_construction_templates_4
+	}
+
+	triggered_desc = {
+		text = avb_automation_4_tooltip
+	}
+
+	show_tech_unlock_if = {
+		always = no
+	}
+}
+
+building_avb_automation_miner_3 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	category = pop_assembly
+	icon = building_avb_automation_3
+
+	building_sets = {
+		mining_automation
+	}
+
+	potential = {
+		owner = {
+			is_wilderness_empire = no
+			is_tankbound_empire = no
+		}
+	}
+
+	allow = {
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				NAND = {
+					free_district_slots = 0
+					free_building_slots <= 1
+					free_housing <= 0
+					free_jobs <= 0
+				}
+			}
+		}
+	}
+
+	destroy_trigger = {
+		owner = {
+			OR = {
+				is_wilderness_empire = yes
+				is_tankbound_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_miner_automated_workforce_mult = 0.75
+		job_mining_drone_automated_workforce_mult = 0.75
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b3_rare_cost
+			exotic_gases = @avb_b3_rare_cost
+			volatile_motes = @avb_b3_rare_cost
+		}
+		upkeep = {
+			energy = @b4_upkeep
+			rare_crystals = @avb_b3_rare_upkeep
+			exotic_gases = @avb_b3_rare_upkeep
+			volatile_motes = @avb_b3_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		tech_avb_construction_templates_3
+	}
+
+	upgrades = {
+		building_avb_automation_miner_4
+	}
+
+	triggered_desc = {
+		text = avb_automation_3_tooltip
+	}
+
+	show_tech_unlock_if = {
+		always = no
+	}
+}
+
+building_avb_automation_miner_4 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	category = pop_assembly
+	icon = building_avb_automation_4
+
+	building_sets = {
+		mining_automation
+	}
+
+	potential = {
+		owner = {
+			is_wilderness_empire = no
+			is_tankbound_empire = no
+		}
+	}
+
+	allow = {
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				NAND = {
+					free_district_slots = 0
+					free_building_slots <= 1
+					free_housing <= 0
+					free_jobs <= 0
+				}
+			}
+		}
+	}
+
+	destroy_trigger = {
+		owner = {
+			OR = {
+				is_wilderness_empire = yes
+				is_tankbound_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_miner_automated_workforce_mult = 1
+		job_mining_drone_automated_workforce_mult = 1
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = sr_dark_matter
+			COST = @avb_b5_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_dark_matter
+		}
+		cost = {
+			sr_dark_matter = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @b4_upkeep
+			sr_dark_matter = @avb_b4_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		tech_avb_construction_templates_4
+	}
+
+	triggered_desc = {
+		text = avb_automation_4_tooltip
+	}
+
+	show_tech_unlock_if = {
+		always = no
+	}
+}
+
+building_avb_automation_farmer_3 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	category = pop_assembly
+	icon = building_avb_automation_3
+
+	building_sets = {
+		farming_automation
+	}
+
+	potential = {
+		owner = {
+			is_wilderness_empire = no
+			is_tankbound_empire = no
+		}
+	}
+
+	allow = {
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				NAND = {
+					free_district_slots = 0
+					free_building_slots <= 1
+					free_housing <= 0
+					free_jobs <= 0
+				}
+			}
+		}
+	}
+
+	destroy_trigger = {
+		owner = {
+			OR = {
+				is_wilderness_empire = yes
+				is_tankbound_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_farmer_automated_workforce_mult = 0.75
+		job_agri_drone_automated_workforce_mult = 0.75
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b3_rare_cost
+			exotic_gases = @avb_b3_rare_cost
+			volatile_motes = @avb_b3_rare_cost
+		}
+		upkeep = {
+			energy = @b4_upkeep
+			rare_crystals = @avb_b3_rare_upkeep
+			exotic_gases = @avb_b3_rare_upkeep
+			volatile_motes = @avb_b3_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		tech_avb_construction_templates_3
+	}
+
+	upgrades = {
+		building_avb_automation_farmer_4
+	}
+
+	show_tech_unlock_if = {
+		always = no
+	}
+
+	triggered_desc = {
+		text = avb_automation_3_tooltip
+	}
+}
+
+building_avb_automation_farmer_4 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	category = pop_assembly
+	icon = building_avb_automation_4
+
+	building_sets = {
+		farming_automation
+	}
+
+	potential = {
+		owner = {
+			is_wilderness_empire = no
+			is_tankbound_empire = no
+		}
+	}
+
+	allow = {
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				NAND = {
+					free_district_slots = 0
+					free_building_slots <= 1
+					free_housing <= 0
+					free_jobs <= 0
+				}
+			}
+		}
+	}
+
+	destroy_trigger = {
+		owner = {
+			OR = {
+				is_wilderness_empire = yes
+				is_tankbound_empire = yes
+			}
+		}
+	}
+
+	planet_modifier = {
+		job_farmer_automated_workforce_mult = 1
+		job_agri_drone_automated_workforce_mult = 1
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = sr_dark_matter
+			COST = @avb_b5_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_dark_matter
+		}
+		cost = {
+			sr_dark_matter = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @b4_upkeep
+			sr_dark_matter = @avb_b4_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		tech_avb_construction_templates_4
+	}
+
+	show_tech_unlock_if = {
+		always = no
+	}
+
+	triggered_desc = {
+		text = avb_automation_4_tooltip
+	}
+}

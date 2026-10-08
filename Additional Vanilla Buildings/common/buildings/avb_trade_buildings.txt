@@ -1,0 +1,427 @@
+building_avb_commercial_2 = {
+	base_buildtime = @avb_b2_time
+	can_build = no
+	icon = building_commercial_megaplex
+	category = trade
+
+	building_sets = {
+		urban
+		trade
+	}
+
+	potential = {
+		owner? = { is_regular_empire = yes }
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	allow = { }
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b2_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b2_upkeep
+			rare_crystals = @avb_b2_rare_upkeep
+		}
+	}
+
+	inline_script = {
+		script = jobs/trader_add
+		AMOUNT = @avb_b2_jobs
+	}
+
+	prerequisites = {
+		"tech_avb_interstellar_economics_2"
+	}
+
+	ai_resource_production = {
+		energy = 6
+		trigger = {
+			OR = {
+				num_unemployed >= 1000
+				num_assigned_jobs = {
+					job = servant
+					value >= 1000
+				}
+			}
+		}
+	}
+
+	upgrades = {
+		"building_avb_commercial_3"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+}
+
+building_avb_commercial_3 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	category = trade
+
+	building_sets = {
+		urban
+		trade
+	}
+
+	potential = {
+		owner? = { is_regular_empire = yes }
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	allow = { }
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b3_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+			rare_crystals = @avb_b3_rare_upkeep
+		}
+	}
+
+	inline_script = {
+		script = jobs/trader_add
+		AMOUNT = @avb_b3_jobs
+	}
+
+	prerequisites = {
+		"tech_avb_interstellar_economics_3"
+	}
+
+	ai_resource_production = {
+		energy = 6
+		trigger = {
+			OR = {
+				num_unemployed >= 1000
+				num_assigned_jobs = {
+					job = servant
+					value >= 1000
+				}
+			}
+		}
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+}
+
+building_avb_commercial_megaplex_2 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	icon = building_avb_commercial_4
+	category = trade
+
+	building_sets = {
+		trade
+	}
+
+	potential = {
+		owner? = {
+			is_regular_empire = yes
+		}
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	allow = { }
+
+	inline_script = {
+		script = jobs/trader_add
+		AMOUNT = @avb_b2_jobs
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b3_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+			rare_crystals = @avb_b3_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_traders_upkeep_mult = -0.15
+	}
+
+	prerequisites = {
+		"tech_avb_interstellar_economics_2"
+	}
+
+	upgrades = {
+		building_avb_commercial_megaplex_3
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+
+	ai_resource_production = {
+		energy = 6
+		trigger = {
+			OR = {
+				num_unemployed >= 1000
+				num_assigned_jobs = {
+					job = servant
+					value >= 1000
+				}
+			}
+		}
+	}
+}
+
+building_avb_commercial_megaplex_3 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	icon = building_avb_commercial_5
+	category = trade
+
+	building_sets = {
+		trade
+	}
+
+	potential = {
+		owner? = {
+			is_regular_empire = yes
+		}
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	allow = { }
+
+	inline_script = {
+		script = jobs/trader_add
+		AMOUNT = @avb_b3_jobs
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b4_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			rare_crystals = @avb_b4_rare_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_traders_upkeep_mult = -0.225
+	}
+
+	prerequisites = {
+		"tech_avb_interstellar_economics_3"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+
+	ai_resource_production = {
+		energy = 6
+		trigger = {
+			OR = {
+				num_unemployed >= 1000
+				num_assigned_jobs = {
+					job = servant
+					value >= 1000
+				}
+			}
+		}
+	}
+}
+
+building_avb_galactic_stock_exchange_2 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	planet_limit = 1
+	category = trade
+
+	building_sets = {
+		trade
+	}
+
+	potential = {
+		owner? = { is_regular_empire = yes }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+
+	allow = {
+		has_upgraded_capital_4 = yes
+		orbital_ring_and_arkship_equivalent_absent = {
+			RING = ring_galactic_stock_exchange
+			ARKSHIP = arkship_galactic_stock_exchange
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	planet_modifier = {
+		pop_trader_bonus_workforce_mult = 0.225
+	}
+
+	country_modifier = {
+		country_trade_fee = -0.075
+	}
+
+	inline_script = {
+		script = jobs/trader_add
+		AMOUNT = @avb_b3_jobs
+	}
+
+	inline_script = {
+		script = "jobs/politician_add_from_civic"
+		AMOUNT = @building_static_jobs_high
+		CIVIC = civic_merchant_guilds
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_politician
+		toggle = @has_bug_branch
+		CIVIC = civic_bugged_banking_corporation
+		AMOUNT = @building_static_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_politician
+		toggle = @has_bug_branch
+		CIVIC = civic_bugged_board_of_executives
+		AMOUNT = @building_static_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_politician
+		toggle = @has_bug_branch
+		CIVIC = civic_bugged_stock_based_salary
+		AMOUNT = @building_static_jobs
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_politician
+		toggle = @has_bug_branch
+		CIVIC = civic_bugged_state_monopoly
+		AMOUNT = @building_static_jobs
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b3_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+			rare_crystals = @avb_b3_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_galactic_markets_2"
+	}
+
+	ai_resource_production = {
+		trade = 20
+	}
+}

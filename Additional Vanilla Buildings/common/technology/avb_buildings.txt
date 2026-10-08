@@ -1,0 +1,770 @@
+tech_avb_mote_harvesters_2 = {
+	cost = @tier5cost1
+	area = physics
+	tier = 5
+	category = { particles }
+	prerequisites = { "tech_mine_volatile_motes" "tech_avb_capital_4" }
+	weight = @tier5weight1
+	icon = tech_avb_volatile_motes_2
+
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					OR = {
+						has_deposit = d_dust_caverns
+						has_deposit = d_dust_desert
+						has_deposit = d_industrial_sector
+					}
+				}
+				any_planet_within_border = {
+					OR = {
+						has_deposit = d_volatile_motes_1
+						has_deposit = d_volatile_motes_2
+						has_deposit = d_volatile_motes_3
+						has_deposit = d_volatile_motes_4
+						has_deposit = d_volatile_motes_5
+					}
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = @strategic_resource_ai_tech_factor #important resource
+	}
+}
+
+tech_avb_gas_extractors_2 = {
+	cost = @tier5cost1
+	area = engineering
+	tier = 5
+	category = { materials }
+	prerequisites = { "tech_mine_exotic_gases" "tech_avb_capital_4" }
+	weight = @tier5weight1
+	icon = tech_avb_exotic_gases_2
+
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					OR = {
+						has_deposit = d_bubbling_swamp
+						has_deposit = d_fuming_bog
+						has_deposit = d_industrial_sector
+						has_deposit = d_exotic_mountain
+					}
+				}
+				any_planet_within_border = {
+					OR = {
+						has_deposit = d_exotic_gases_1
+						has_deposit = d_exotic_gases_2
+						has_deposit = d_exotic_gases_3
+						has_deposit = d_exotic_gases_4
+						has_deposit = d_exotic_gases_5
+					}
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = @strategic_resource_ai_tech_factor #important resource
+	}
+}
+
+tech_avb_crystal_mines_2 = {
+	cost = @tier5cost1
+	area = engineering
+	tier = 5
+	category = { materials }
+	prerequisites = { "tech_mine_rare_crystals" "tech_avb_capital_4" }
+	weight = @tier5weight1
+
+	weight_modifier = {
+		factor = 2
+		modifier = { }
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					OR = {
+						has_deposit = d_crystalline_caverns
+						has_deposit = d_crystal_forest
+						has_deposit = d_crystal_reef
+						has_deposit = d_industrial_sector
+					}
+				}
+				any_planet_within_border = {
+					OR = {
+						has_deposit = d_rare_crystals_1
+						has_deposit = d_rare_crystals_2
+						has_deposit = d_rare_crystals_3
+						has_deposit = d_rare_crystals_4
+						has_deposit = d_rare_crystals_5
+					}
+				}
+			}
+		}
+		modifier = {
+			add = 1
+			has_country_flag = tech_mine_rare_crystals_culling_boost
+		}
+	}
+
+	ai_weight = {
+		factor = @strategic_resource_ai_tech_factor #strategic resource
+	}
+}
+
+tech_avb_betharian_power_plant_2 = {
+	cost = @tier5cost2
+	area = engineering
+	tier = 5
+	category = { materials }
+	prerequisites = { "tech_mine_betharian" "tech_avb_capital_4" }
+	weight = @tier5weight2
+
+	potential = {
+		always = no
+	}
+
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					has_deposit = d_betharian_deposit
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = 4 #strategic resource
+	}
+}
+
+######################
+# Power Plants
+#####################
+
+tech_avb_power_plant_5 = {
+	cost = @tier4cost1
+	area = physics
+	tier = 4
+	category = { field_manipulation }
+	prerequisites = { "tech_power_plant_4" }
+	weight = @tier4weight1
+
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_prosperity_adopt
+		}
+	}
+
+	modifier = {
+		planet_technician_energy_produces_mult = 0.2
+		starbase_constructions_energy_produces_mult = 0.10
+	}
+
+	ai_weight = {
+		factor = @technician_ai_factor
+	}
+}
+
+tech_avb_power_plant_6 = {
+	cost = @tier5cost1
+	area = physics
+	tier = 5
+	category = { field_manipulation }
+	prerequisites = { "tech_avb_power_plant_5" }
+	weight = @tier5weight1
+
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_prosperity_adopt
+		}
+	}
+
+	modifier = {
+		planet_technician_energy_produces_mult = 0.2
+		starbase_constructions_energy_produces_mult = 0.10
+	}
+
+	ai_weight = {
+		factor = @technician_ai_factor
+	}
+}
+
+tech_avb_power_plant_7 = {
+	cost = @avbtier6cost1
+	area = physics
+	tier = 6
+	category = { field_manipulation }
+	prerequisites = { "tech_avb_power_plant_6" }
+	weight = @avbtier6weight1
+
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_prosperity_adopt
+		}
+	}
+
+	modifier = {
+		planet_technician_energy_produces_mult = 0.2
+		starbase_constructions_energy_produces_mult = 0.10
+	}
+
+	ai_weight = {
+		factor = @technician_ai_factor
+	}
+}
+
+tech_avb_power_plant_8 = {
+	cost = @avbtier7cost1
+	area = physics
+	tier = 7
+	category = { field_manipulation }
+	prerequisites = { "tech_avb_power_plant_7" }
+	weight = @avbtier7weight1
+
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_prosperity_adopt
+		}
+	}
+
+	modifier = {
+		planet_technician_energy_produces_mult = 0.2
+		starbase_constructions_energy_produces_mult = 0.10
+	}
+
+	ai_weight = {
+		factor = @technician_ai_factor
+	}
+}
+
+tech_avb_crops_5 = {
+	cost = @tier4cost1
+	area = society
+	tier = 4
+	category = { biology }
+	prerequisites = { "tech_nano_vitality_crops" }
+	weight = @tier4weight1
+
+	potential = {
+		is_wilderness_empire = no
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0.01
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+				is_individual_machine = yes
+				has_origin = origin_synthetic_fertility
+			}
+			NOR = {
+				has_country_flag = non_lithoid_subspecies
+				has_valid_civic = civic_machine_servitor
+				has_valid_civic = civic_machine_assimilator
+				any_owned_planet = {
+					OR = {
+						has_any_capped_planet_farming_district = yes
+						has_any_agriculture_zone = yes
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+				AND = {
+					is_individual_machine = yes
+					NOT = { has_country_flag = non_lithoid_subspecies }
+				}
+			}
+		}
+		modifier = {
+			factor = 1.25
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 2
+			has_relic = r_pox_sample
+		}
+		modifier = {
+			factor = 2
+			country_uses_bio_ships = yes
+		}
+	}
+
+	modifier = {
+		planet_farmers_food_produces_mult = 0.2
+		starbase_constructions_food_produces_mult = 0.10
+	}
+
+	ai_weight = {
+		factor = @farming_ai_weight_factor
+		modifier = {
+			factor = 1.25
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_fanatic_pacifist
+		}
+	}
+}
+
+tech_avb_crops_6 = {
+	cost = @tier5cost1
+	area = society
+	tier = 5
+	category = { biology }
+	prerequisites = { "tech_avb_crops_5" }
+	weight = @tier5weight1
+
+	weight_modifier = {
+		modifier = {
+			factor = 0.01
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+				is_individual_machine = yes
+				has_origin = origin_synthetic_fertility
+			}
+			NOR = {
+				has_country_flag = non_lithoid_subspecies
+				has_valid_civic = civic_machine_servitor
+				has_valid_civic = civic_machine_assimilator
+				any_owned_planet = {
+					OR = {
+						has_any_capped_planet_farming_district = yes
+						has_any_agriculture_zone = yes
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+				AND = {
+					is_individual_machine = yes
+					NOT = { has_country_flag = non_lithoid_subspecies }
+				}
+			}
+		}
+		modifier = {
+			factor = 1.25
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 2
+			has_relic = r_pox_sample
+		}
+		modifier = {
+			factor = 2
+			country_uses_bio_ships = yes
+		}
+	}
+
+	modifier = {
+		planet_farmers_food_produces_mult = 0.2
+		starbase_constructions_food_produces_mult = 0.10
+	}
+
+	ai_weight = {
+		factor = @farming_ai_weight_factor
+		modifier = {
+			factor = 1.25
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_fanatic_pacifist
+		}
+	}
+}
+
+tech_avb_mining_4 = {
+	cost = @tier4cost1
+	area = engineering
+	tier = 4
+	category = { industry }
+	prerequisites = { "tech_mining_3" }
+	weight = @tier4weight1
+
+	weight_modifier = { }
+
+	modifier = {
+		planet_miners_minerals_produces_mult = 0.20
+		starbase_constructions_minerals_produces_mult = 0.10
+	}
+
+	ai_weight = {
+		factor = @ai_mining_factor
+	}
+}
+
+tech_avb_mining_5 = {
+	cost = @tier5cost1
+	area = engineering
+	tier = 5
+	category = { industry }
+	prerequisites = { "tech_avb_mining_4" }
+	weight = @tier5weight1
+
+	weight_modifier = { }
+
+	modifier = {
+		planet_miners_minerals_produces_mult = 0.20
+		starbase_constructions_minerals_produces_mult = 0.10
+	}
+
+	ai_weight = {
+		factor = @ai_mining_factor
+	}
+}
+
+tech_avb_mining_6 = {
+	cost = @avbtier6cost1
+	area = engineering
+	tier = 6
+	category = { industry }
+	prerequisites = { "tech_avb_mining_5" }
+	weight = @avbtier6weight1
+
+	weight_modifier = { }
+
+	modifier = {
+		planet_miners_minerals_produces_mult = 0.20
+		starbase_constructions_minerals_produces_mult = 0.10
+	}
+
+	ai_weight = {
+		factor = @ai_mining_factor
+	}
+}
+
+##
+## Unity Technologies
+##
+# Bureaucratic
+tech_avb_bureaucratic_4 = {
+	cost = @tier5cost2
+	area = society
+	tier = 5
+	category = { statecraft }
+	prerequisites = { "tech_galactic_bureaucracy" }
+	weight = @tier5weight2
+
+	potential = {
+		is_spiritualist = no
+		is_hive_empire = no
+		NOT = { has_valid_civic = civic_machine_servitor }
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			num_owned_planets > 2
+		}
+		modifier = {
+			factor = 1.5
+			num_owned_planets > 3
+		}
+		modifier = {
+			factor = 1.5
+			num_owned_planets > 4
+		}
+	}
+
+	modifier = {
+		country_edict_fund_add = 20
+	}
+
+	ai_weight = { }
+}
+
+tech_avb_bureaucratic_5 = {
+	cost = @avbtier6cost2
+	area = society
+	tier = 6
+	category = { statecraft }
+	prerequisites = { "tech_avb_bureaucratic_4" }
+	weight = @avbtier6weight2
+
+	potential = {
+		is_hive_empire = no
+		NOT = { has_valid_civic = civic_machine_servitor }
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			num_owned_planets > 2
+		}
+		modifier = {
+			factor = 1.5
+			num_owned_planets > 3
+		}
+		modifier = {
+			factor = 1.5
+			num_owned_planets > 4
+		}
+	}
+
+	modifier = {
+		country_edict_fund_add = 20
+	}
+
+	ai_weight = { }
+}
+
+tech_avb_bureaucratic_6 = {
+	cost = @avbtier7cost2
+	area = society
+	tier = 7
+	category = { statecraft }
+	prerequisites = { "tech_avb_bureaucratic_5" }
+	weight = @avbtier6weight2
+
+	potential = {
+		is_hive_empire = no
+		NOT = { has_valid_civic = civic_machine_servitor }
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			num_owned_planets > 2
+		}
+		modifier = {
+			factor = 1.5
+			num_owned_planets > 3
+		}
+		modifier = {
+			factor = 1.5
+			num_owned_planets > 4
+		}
+	}
+
+	modifier = {
+		country_edict_fund_add = 20
+	}
+
+	ai_weight = { }
+}
+
+# Temple
+tech_avb_temple_4 = {
+	cost = @tier5cost2
+	area = society
+	tier = 5
+	category = { statecraft }
+	prerequisites = { "tech_consecration_fields" }
+	weight = @tier5weight2
+
+	potential = {
+		OR = {
+			has_ethic = ethic_spiritualist
+			has_ethic = ethic_fanatic_spiritualist
+			AND = {
+				is_gestalt = no
+				has_make_spiritualist_perk = yes
+			}
+		}
+	}
+
+	weight_modifier = { }
+
+	ai_weight = { }
+}
+
+tech_avb_temple_5 = {
+	cost = @avbtier6cost2
+	area = society
+	tier = 6
+	category = { statecraft }
+	prerequisites = { "tech_avb_temple_4" }
+	weight = @avbtier6weight2
+
+	potential = {
+		OR = {
+			has_ethic = ethic_spiritualist
+			has_ethic = ethic_fanatic_spiritualist
+			AND = {
+				is_gestalt = no
+				has_make_spiritualist_perk = yes
+			}
+		}
+	}
+
+	weight_modifier = { }
+
+	ai_weight = { }
+}
+
+tech_avb_temple_6 = {
+	cost = @avbtier7cost2
+	area = society
+	tier = 7
+	category = { statecraft }
+	prerequisites = { "tech_avb_temple_5" }
+	weight = @avbtier7weight2
+
+	potential = {
+		OR = {
+			has_ethic = ethic_spiritualist
+			has_ethic = ethic_fanatic_spiritualist
+			AND = {
+				is_gestalt = no
+				has_make_spiritualist_perk = yes
+			}
+		}
+	}
+
+	weight_modifier = { }
+
+	ai_weight = { }
+}
+
+tech_avb_hive_unity_4 = {
+	cost = @tier5cost2
+	area = society
+	tier = 5
+	category = { statecraft }
+	prerequisites = { "tech_hive_confluence" }
+	weight = @tier5weight2
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = { }
+	ai_weight = { }
+}
+
+tech_avb_hive_unity_5 = {
+	cost = @avbtier6cost2
+	area = society
+	tier = 6
+	category = { statecraft }
+	prerequisites = { "tech_avb_hive_unity_4" }
+	weight = @avbtier6weight2
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = { }
+	ai_weight = { }
+}
+
+tech_avb_hive_unity_6 = {
+	cost = @avbtier7cost2
+	area = society
+	tier = 7
+	category = { statecraft }
+	prerequisites = { "tech_avb_hive_unity_5" }
+	weight = @avbtier7weight2
+
+	potential = {
+		always = yes
+	}
+
+	weight_modifier = { }
+	ai_weight = { }
+}
+
+tech_avb_monument_4 = {
+	cost = @tier4cost1
+	area = society
+	tier = 4
+	category = { statecraft }
+	prerequisites = { "tech_hypercomms_forum" }
+	weight = @tier4weight1
+
+	potential = {
+		always = yes
+	}
+
+	#unlocks 3rd upgraded culture building
+
+	weight_modifier = { }
+	ai_weight = { }
+}
+
+tech_avb_monument_5 = {
+	cost = @tier5cost1
+	area = society
+	tier = 5
+	category = { statecraft }
+	prerequisites = { "tech_avb_monument_4" }
+	weight = @tier5weight1
+
+	potential = {
+		always = yes
+	}
+
+	#unlocks 4th upgraded culture building
+
+	weight_modifier = { }
+
+	ai_weight = { }
+}
+
+tech_avb_monument_6 = {
+	cost = @avbtier6cost1
+	area = society
+	tier = 6
+	category = { statecraft }
+	prerequisites = { "tech_avb_monument_5" }
+	weight = @avbtier6weight1
+
+	potential = {
+		always = yes
+	}
+
+	#unlocks 5th upgraded culture building
+
+	weight_modifier = { }
+
+	ai_weight = { }
+}

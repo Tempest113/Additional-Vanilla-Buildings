@@ -1,0 +1,1294 @@
+building_avb_hydroponics_farm_2 = {
+	base_buildtime = @avb_b2_time
+	can_build = no
+
+	category = resource
+
+	building_sets = {
+		hydroponics
+	}
+
+	potential = {
+		owner? = {
+			OR = {
+				country_uses_food = yes
+				is_ai = no
+			}
+			is_wilderness_empire = no
+		}
+		NOR = {
+			is_planet_class = pc_machine
+			has_modifier = resort_colony
+		}
+		OR = {
+			has_carrier_flag = ignore_ai_building_limitations
+			owner = { is_ai = no }
+			# AI is allowed to build up to two of these.
+			num_buildings = { type = building_hydroponics_farm value < 2 }
+		}
+	}
+
+	allow = {
+		always = yes
+	}
+
+	destroy_trigger = {
+		owner? = {
+			OR = {
+				AND = {
+					is_ai = yes
+					country_uses_food = no
+				}
+				is_wilderness_empire = yes
+			}
+		}
+	}
+
+	inline_script = {
+		script = jobs/farmers_add
+		AMOUNT = @avb_b2_jobs
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @avb_b2_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_hydroponics_2"
+	}
+
+	upgrades = {
+		building_avb_hydroponics_farm_3
+	}
+
+	ai_weight_coefficient = @static_jobs_ai_weight_coefficient
+}
+
+building_avb_hydroponics_farm_3 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+
+	category = resource
+
+	building_sets = {
+		hydroponics
+	}
+
+	potential = {
+		owner? = {
+			OR = {
+				country_uses_food = yes
+				is_ai = no
+			}
+			is_wilderness_empire = no
+		}
+		NOR = {
+			is_planet_class = pc_machine
+			has_modifier = resort_colony
+		}
+		OR = {
+			has_carrier_flag = ignore_ai_building_limitations
+			owner = { is_ai = no }
+			# AI is allowed to build up to two of these.
+			num_buildings = { type = building_hydroponics_farm value < 2 }
+		}
+	}
+
+	allow = {
+		always = yes
+	}
+
+	destroy_trigger = {
+		owner? = {
+			OR = {
+				AND = {
+					is_ai = yes
+					country_uses_food = no
+				}
+				is_wilderness_empire = yes
+			}
+		}
+	}
+
+	inline_script = {
+		script = jobs/farmers_add
+		AMOUNT = @avb_b3_jobs
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+		}
+	}
+
+	prerequisites = {
+		tech_avb_hydroponics_3
+	}
+
+	ai_weight_coefficient = @static_jobs_ai_weight_coefficient
+}
+
+building_avb_food_processing_3 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	category = resource
+
+	building_sets = {
+		farming
+	}
+
+	potential = {
+		owner = { is_wilderness_empire = no } # see 'building_massive_growth_4'
+	}
+
+	allow = {
+		exists = owner
+		has_fully_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				OR = {
+					AND = {
+						is_ai = yes
+						country_uses_food = no
+					}
+					is_wilderness_empire = yes
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				has_any_farming_district_or_building = no
+			}
+			is_planet_class = pc_machine
+			has_modifier = resort_colony
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = exotic_gases
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b5_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+			exotic_gases = @avb_b5_rare_upkeep
+		}
+		inline_script = {
+			script = building_resources/avb_ringworld_resources
+			RARE = exotic_gases
+			TRIGGER = " "
+		}
+	}
+
+	planet_modifier = {
+		planet_farmers_food_produces_add = 1.5
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = {
+					exists = owner
+					owner = { is_bugged_industrial_mechanization = yes }
+				}
+				job_farmer_automated_workforce_mult = 0.5
+			}
+		"
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_ringworld_output_boost = yes
+		}
+		modifier = {
+			planet_farmers_food_produces_add = 0.5
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_food_processing_3"
+	}
+
+	upgrades = {
+		building_avb_food_processing_4
+	}
+
+	ai_resource_production = {
+		food = 15
+		trigger = {
+			has_any_agriculture_zone = yes
+		}
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+}
+
+building_avb_food_processing_4 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	category = resource
+
+	building_sets = {
+		farming
+	}
+
+	potential = {
+		owner = { is_wilderness_empire = no } # see 'building_massive_growth_4'
+	}
+
+	allow = {
+		exists = owner
+		has_upgraded_capital_4 = yes
+	}
+
+	destroy_trigger = {
+		OR = {
+			AND = {
+				exists = owner
+				OR = {
+					owner = {
+						is_ai = yes
+						country_uses_food = no
+					}
+					AND = {
+						owner = {
+							is_ai = yes
+						}
+						has_any_farming_district_or_building = no
+					}
+				}
+			}
+			is_planet_class = pc_machine
+			has_modifier = resort_colony
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = exotic_gases
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @avb_b6_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			exotic_gases = @avb_b6_rare_upkeep
+		}
+		inline_script = {
+			script = building_resources/avb_ringworld_resources
+			RARE = exotic_gases
+			TRIGGER = " "
+		}
+	}
+
+	planet_modifier = {
+		planet_farmers_food_produces_add = 2.25
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = {
+					exists = owner
+					owner = { is_bugged_industrial_mechanization = yes }
+				}
+				job_farmer_automated_workforce_mult = 0.5
+			}
+		"
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_ringworld_output_boost = yes
+		}
+		modifier = {
+			planet_farmers_food_produces_add = 0.5
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_food_processing_4"
+	}
+
+	ai_resource_production = {
+		food = 15
+		trigger = {
+			has_any_agriculture_zone = yes
+		}
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+}
+
+building_avb_baol_organic_plant_2 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	category = resource
+
+	building_sets = {
+		farming
+		factory
+	}
+
+	potential = {
+		exists = owner
+		NOR = {
+			is_planet_class = pc_machine
+			has_modifier = resort_colony
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				is_ai = yes
+				country_uses_food = no
+			}
+			is_planet_class = pc_machine
+			has_modifier = resort_colony
+		}
+	}
+
+	inline_script = {
+		script = jobs/farmers_add
+		AMOUNT = @avb_b2_jobs
+	}
+
+	# for exceptions to the above (i.e. Wilderness):
+	inline_script = {
+		script = buildings/planet_job_resource_produces_add
+		JOB = farmers
+		RESOURCE = food
+		AMOUNT = 0.375
+	}
+
+	inline_script = {
+		script = buildings/on_all_wilderness_buildings_districts
+	}
+
+	# Additional farmer output (non-Archaeoengineering)
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				country_uses_consumer_goods = yes
+			}
+		}
+		planet_farmers_consumer_goods_produces_add = 0.15
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				country_uses_consumer_goods = no
+			}
+		}
+		planet_farmers_energy_produces_add = 0.375
+	}
+
+	# Additional farmer output (with Archaeoengineering)
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				country_uses_consumer_goods = yes
+				has_ascension_perk = ap_archaeoengineers
+			}
+		}
+		planet_farmers_consumer_goods_produces_add = 0.1875
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				country_uses_consumer_goods = no
+				has_ascension_perk = ap_archaeoengineers
+			}
+		}
+		planet_farmers_energy_produces_add = 0.375
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			minor_artifacts = 150
+		}
+		upkeep = {
+			energy = 4
+		}
+		cost = {
+			trigger = {
+				owner = { is_wilderness_empire = yes }
+			}
+			biomass = @avb_b3_minerals
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_baol_organic_plant_2"
+	}
+}
+
+building_avb_mineral_purification_3 = {
+	desc = {
+		trigger = { NOT = { is_planet_class = pc_shattered_ring_habitable } }
+		text = building_avb_mineral_purification_3_desc
+	}
+
+	desc = {
+		trigger = { is_planet_class = pc_shattered_ring_habitable }
+		text = building_avb_mineral_purification_3_scrap_desc
+	}
+
+	base_buildtime = @avb_b3_time
+	can_build = no
+	category = resource
+
+	building_sets = {
+		mining
+		harvest
+	}
+
+	potential = {
+		owner? = { is_wilderness_empire = no } # see 'building_churning_tunnels_4'
+		OR = {
+			owner = { is_ai = no }
+			has_any_mining_district_or_building = yes
+		}
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+		NOT = {
+			has_modifier = resort_colony
+		}
+	}
+
+	destroy_trigger = {
+		OR = {
+			has_modifier = resort_colony
+			AND = {
+				owner? = { is_ai = yes }
+				has_any_mining_district_or_building = no
+			}
+		}
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = {
+					exists = owner
+					owner = { is_bugged_industrial_mechanization = yes }
+				}
+				job_miner_automated_workforce_mult = 0.5
+			}
+		"
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			volatile_motes = @avb_b5_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+			volatile_motes = @avb_b5_rare_upkeep
+		}
+		inline_script = {
+			script = building_resources/avb_ringworld_resources
+			RARE = volatile_motes
+			TRIGGER = " "
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = { is_nomadic = no }
+			NOT = { is_planet_class = pc_shattered_ring_habitable }
+		}
+		modifier = {
+			planet_miners_minerals_produces_add = 1.5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = { is_nomadic = no }
+			is_planet_class = pc_shattered_ring_habitable
+		}
+		modifier = {
+			planet_miners_minerals_produces_add = 0.75
+			planet_miners_alloys_produces_add = 0.3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = { is_nomadic = no }
+			has_ringworld_output_boost = yes
+		}
+		modifier = {
+			planet_miners_minerals_produces_add = 0.5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				is_nomadic = yes
+				is_gestalt = no
+			}
+		}
+		job_ark_harvester_add = @avb_b3_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				is_nomadic = yes
+				is_gestalt = yes
+			}
+		}
+		job_ark_harvester_gestalt_add = @avb_b3_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				is_nomadic = yes
+				is_gestalt = no
+			}
+		}
+		job_ark_harvester_add = @avb_b3_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				is_nomadic = yes
+				is_gestalt = yes
+			}
+		}
+		job_ark_harvester_gestalt_add = @avb_b3_jobs
+	}
+
+	prerequisites = {
+		"tech_avb_mineral_purification_3"
+	}
+
+	upgrades = {
+		building_avb_mineral_purification_4
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+}
+
+building_avb_mineral_purification_4 = {
+	desc = {
+		trigger = { NOT = { is_planet_class = pc_shattered_ring_habitable } }
+		text = building_avb_mineral_purification_4_desc
+	}
+
+	desc = {
+		trigger = { is_planet_class = pc_shattered_ring_habitable }
+		text = building_avb_mineral_purification_4_scrap_desc
+	}
+
+	base_buildtime = @avb_b4_time
+	can_build = no
+	category = resource
+
+	building_sets = {
+		mining
+		harvest
+	}
+
+	potential = {
+		owner? = { is_wilderness_empire = no } # see 'building_churning_tunnels_4'
+		OR = {
+			owner = { is_ai = no }
+			has_any_mining_district_or_building = yes
+		}
+	}
+
+	allow = {
+		has_upgraded_capital_4 = yes
+		NOT = {
+			has_modifier = resort_colony
+		}
+	}
+
+	destroy_trigger = {
+		OR = {
+			has_modifier = resort_colony
+			AND = {
+				owner? = { is_ai = yes }
+				has_any_mining_district_or_building = no
+			}
+		}
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = {
+					exists = owner
+					owner = { is_bugged_industrial_mechanization = yes }
+				}
+				job_miner_automated_workforce_mult = 0.5
+			}
+		"
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			volatile_motes = @avb_b6_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			volatile_motes = @avb_b6_rare_upkeep
+		}
+		inline_script = {
+			script = building_resources/avb_ringworld_resources
+			RARE = volatile_motes
+			TRIGGER = " "
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = { is_nomadic = no }
+			NOT = { is_planet_class = pc_shattered_ring_habitable }
+		}
+		modifier = {
+			planet_miners_minerals_produces_add = 2.25
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = { is_nomadic = no }
+			is_planet_class = pc_shattered_ring_habitable
+		}
+		modifier = {
+			planet_miners_minerals_produces_add = 1.875
+			planet_miners_alloys_produces_add = 0.45
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = { is_nomadic = no }
+			has_ringworld_output_boost = yes
+		}
+		modifier = {
+			planet_miners_minerals_produces_add = 0.5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				is_nomadic = yes
+				is_gestalt = no
+			}
+		}
+		job_ark_harvester_add = @avb_b4_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				is_nomadic = yes
+				is_gestalt = yes
+			}
+		}
+		job_ark_harvester_gestalt_add = @avb_b4_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				is_nomadic = yes
+				is_gestalt = no
+			}
+		}
+		job_ark_harvester_add = @avb_b4_jobs
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner? = {
+				is_nomadic = yes
+				is_gestalt = yes
+			}
+		}
+		job_ark_harvester_gestalt_add = @avb_b4_jobs
+	}
+
+	prerequisites = {
+		"tech_avb_mineral_purification_4"
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+}
+
+building_avb_energy_grid_3 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	category = resource
+
+	building_sets = {
+		generator
+	}
+
+	potential = {
+		NOT = { has_modifier = resort_colony }
+		owner? = { is_wilderness_empire = no }
+		OR = {
+			owner = { is_ai = no }
+			has_any_generator_district_or_building = yes
+		}
+	}
+
+	destroy_trigger = {
+		OR = {
+			has_modifier = resort_colony
+			AND = {
+				owner? = { is_ai = yes }
+				has_any_generator_district_or_building = no
+			}
+			AND = {
+				owner? = { is_wilderness_empire = yes } # see 'building_bioelectric_stimulator_4'
+			}
+		}
+	}
+
+	allow = {
+		has_fully_upgraded_capital = yes
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b5_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+			rare_crystals = @avb_b5_rare_upkeep
+		}
+		inline_script = {
+			script = building_resources/avb_ringworld_resources
+			RARE = rare_crystals
+			TRIGGER = " "
+		}
+	}
+
+	planet_modifier = {
+		planet_technician_energy_produces_add = 1.5
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = {
+					exists = owner
+					owner = { is_bugged_industrial_mechanization = yes }
+				}
+				job_technician_automated_workforce_mult = 0.5
+			}
+		"
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_ringworld_output_boost = yes
+		}
+		modifier = {
+			planet_technician_energy_produces_add = 0.5
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_power_hub_3"
+	}
+
+	upgrades = {
+		building_avb_energy_grid_4
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+}
+
+building_avb_energy_grid_4 = {
+	base_buildtime = @avb_b4_time
+	can_build = no
+	category = resource
+
+	building_sets = {
+		generator
+	}
+
+	potential = {
+		NOT = { has_modifier = resort_colony }
+		owner? = { is_wilderness_empire = no }
+		OR = {
+			owner = { is_ai = no }
+			has_any_generator_district_or_building = yes
+		}
+	}
+
+	destroy_trigger = {
+		OR = {
+			has_modifier = resort_colony
+			AND = {
+				owner? = { is_ai = yes }
+				has_any_generator_district_or_building = no
+			}
+			AND = {
+				owner? = { is_wilderness_empire = yes } # see 'building_bioelectric_stimulator_4'
+			}
+		}
+	}
+
+	allow = {
+		has_upgraded_capital_5 = yes
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = rare_crystals
+			COST = @avb_b4_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @avb_b6_rare_cost
+		}
+		upkeep = {
+			energy = @avb_b4_upkeep
+			rare_crystals = @avb_b6_rare_upkeep
+		}
+		inline_script = {
+			script = building_resources/avb_ringworld_resources
+			RARE = rare_crystals
+			TRIGGER = " "
+		}
+	}
+
+	planet_modifier = {
+		planet_technician_energy_produces_add = 2.25
+	}
+
+	inline_script = {
+		script = avb_compat/avb_toggled_code
+		toggle = @has_bug_branch
+		code = "
+			triggered_planet_modifier = {
+				potential = {
+					exists = owner
+					owner = { is_bugged_industrial_mechanization = yes }
+				}
+				job_technician_automated_workforce_mult = 0.5
+			}
+		"
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_ringworld_output_boost = yes
+		}
+		modifier = {
+			planet_technician_energy_produces_add = 0.5
+		}
+	}
+
+	prerequisites = {
+		"tech_avb_power_hub_4"
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+}
+
+building_avb_resource_silo_2 = {
+	base_buildtime = @avb_b2_time
+	can_build = no
+
+	category = resource
+
+	building_sets = {
+		generator
+		mining
+		farming
+		urban
+		harvest
+	}
+
+	potential = {
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
+		owner? = { is_wilderness_empire = no } # see 'building_subterranean_cache'
+	}
+
+	allow = {
+		exists = owner
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				AND = {
+					NOT = { has_building = building_resource_silo }
+					OR = {
+						owner = {
+							is_machine_empire = yes
+							has_active_tradition = tr_domination_modular_depot
+						}
+						is_active_resolution = "resolution_greatergood_balance_in_the_middle"
+						is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+						owner = {
+							has_ascension_perk = ap_arcology_project
+							NOT = { has_technology = tech_mega_engineering }
+						}
+						owner = { country_near_tangible_resource_cap = yes }
+					}
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @avb_b2_upkeep
+		}
+	}
+
+	country_modifier = {
+		country_resource_max_add = 10000
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = {
+				has_technology = tech_construction_templates
+			}
+		}
+		country_resource_max_add = 5000
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = {
+				is_nomadic = yes
+			}
+		}
+		situation_nomad_economy_max_progress_add = 750
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = {
+				is_nomadic = yes
+				has_technology = tech_construction_templates
+			}
+		}
+		situation_nomad_economy_max_progress_add = 750
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = {
+				has_valid_civic = civic_machine_obsessional_directive
+			}
+		}
+		country_resource_max_consumer_goods_add = 5000
+	}
+
+	prerequisites = {
+		"tech_mining_3"
+	}
+
+	upgrades = {
+		building_avb_resource_silo_3
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+}
+
+building_avb_resource_silo_3 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+
+	category = resource
+
+	building_sets = {
+		generator
+		mining
+		farming
+		urban
+		harvest
+	}
+
+	potential = {
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
+		owner? = { is_wilderness_empire = no } # see 'building_subterranean_cache'
+	}
+
+	allow = {
+		exists = owner
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				AND = {
+					NOT = { has_building = building_resource_silo }
+					OR = {
+						owner = {
+							is_machine_empire = yes
+							has_active_tradition = tr_domination_modular_depot
+						}
+						is_active_resolution = "resolution_greatergood_balance_in_the_middle"
+						is_active_resolution = "resolution_greatergood_universal_prosperity_mandate"
+						owner = {
+							has_ascension_perk = ap_arcology_project
+							NOT = { has_technology = tech_mega_engineering }
+						}
+						owner = { country_near_tangible_resource_cap = yes }
+					}
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @avb_b3_upkeep
+		}
+	}
+
+	country_modifier = {
+		country_resource_max_add = 20000
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = {
+				has_technology = tech_construction_templates
+			}
+		}
+		country_resource_max_add = 5000
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = {
+				is_nomadic = yes
+			}
+		}
+		situation_nomad_economy_max_progress_add = 1000
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = {
+				is_nomadic = yes
+				has_technology = tech_construction_templates
+			}
+		}
+		situation_nomad_economy_max_progress_add = 1000
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			owner? = {
+				has_valid_civic = civic_machine_obsessional_directive
+			}
+		}
+		country_resource_max_consumer_goods_add = 5000
+	}
+
+	prerequisites = {
+		tech_avb_mining_4
+	}
+
+	show_tech_unlock_if = {
+		is_wilderness_empire = no
+	}
+}
+
+building_avb_bio_reactor_3 = {
+	base_buildtime = @avb_b3_time
+	can_build = no
+	category = resource
+
+	building_sets = {
+		farming
+	}
+
+	allow = {
+		has_major_upgraded_capital = yes
+	}
+
+	potential = {
+		owner? = { is_wilderness_empire = no }
+		NOR = {
+			is_planet_class = pc_machine
+			has_modifier = resort_colony
+		}
+		OR = {
+			owner = {
+				is_ai = no
+			}
+			has_any_farming_district_or_building = yes
+		}
+		owner? = { OR = { is_ai = no country_uses_food = yes } }
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = {
+				is_ai = yes
+				country_uses_food = no
+			}
+			is_planet_class = pc_machine
+			has_modifier = resort_colony
+			AND = {
+				owner = {
+					is_ai = yes
+				}
+				has_any_farming_district_or_building = no
+			}
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = volatile_motes
+			COST = @avb_b3_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			food = @avb_b3_upkeep
+		}
+	}
+
+	planet_modifier = {
+		planet_farmers_food_produces_add = -4.5
+		planet_farmers_energy_produces_add = 3
+		planet_farmers_exotic_gases_produces_add = 0.15
+	}
+
+	prerequisites = {
+		tech_avb_bio_reactor_3
+	}
+}

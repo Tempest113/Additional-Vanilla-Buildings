@@ -1,0 +1,3 @@
+has_avb_mod = {
+	always = yes
+}

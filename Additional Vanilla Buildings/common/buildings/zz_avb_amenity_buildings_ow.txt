@@ -1,0 +1,821 @@
+#############
+# Amenities buildings
+#############
+building_paradise_dome = {
+	base_buildtime = @b2_time
+	can_build = no
+
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+		entertainment
+		resort
+	}
+
+	potential = {
+		has_building = building_luxury_residence
+		OR = {
+			NOT = { is_planet_class = pc_habitat }
+			AND = {
+				exists = owner
+				owner = {
+					is_void_dweller_empire = yes
+				}
+			}
+		}
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+		owner? = {
+			OR = {
+				NOT = { has_origin = origin_forever_cruise }
+				has_country_flag = forever_cruise_over
+			}
+		}
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			owner = { has_valid_civic = civic_shared_burden }
+			owner = { has_origin = origin_forever_cruise }
+			has_modifier = slave_colony
+		}
+	}
+
+	convert_to = {
+		building_organic_paradise
+		building_drone_megastorage
+		building_expanded_warren
+		building_communal_housing_large
+	}
+
+	planet_modifier = {
+		planet_housing_add = 3000
+		planet_amenities_add = 3000
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = 3
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_paradise_dome"
+	}
+
+	show_tech_unlock_if = {
+		owner = {
+			is_regular_empire = yes
+			NOT = { has_valid_civic = civic_shared_burden }
+		}
+	}
+
+	upgrades = {
+		"building_avb_residence_3"
+	}
+
+	ai_weight_coefficient = 1.25
+}
+
+building_communal_housing_large = {
+	base_buildtime = @b2_time
+	can_build = no
+	icon = building_paradise_dome
+
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+		entertainment
+		resort
+	}
+
+	potential = {
+		exists = owner
+		has_building = building_communal_housing
+		owner = {
+			is_regular_empire = yes
+			has_valid_civic = civic_shared_burden
+		}
+		OR = {
+			NOT = { is_planet_class = pc_habitat }
+			owner = { is_void_dweller_empire = yes }
+		}
+		NOR = {
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			NOT = {
+				owner = {
+					is_regular_empire = yes
+					has_valid_civic = civic_shared_burden
+				}
+			}
+		}
+	}
+
+	show_tech_unlock_if = {
+		owner = {
+			is_regular_empire = yes
+			has_valid_civic = civic_shared_burden
+		}
+	}
+
+	convert_to = {
+		building_drone_megastorage
+		building_expanded_warren
+		building_paradise_dome
+	}
+
+	planet_modifier = {
+		planet_housing_add = 4000
+		planet_amenities_add = 5000
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = 3
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_paradise_dome"
+	}
+
+	upgrades = {
+		"building_avb_communal_housing_3"
+	}
+
+	ai_weight_coefficient = 1.25
+}
+
+#Machine housing
+
+building_drone_megastorage = {
+	base_buildtime = @b2_time
+	can_build = no
+
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	potential = {
+		has_building = building_drone_storage
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { is_machine_empire = no }
+	}
+
+	convert_to = {
+		building_paradise_dome
+		building_expanded_warren
+		building_communal_housing_large
+	}
+
+	planet_modifier = {
+		planet_housing_add = 3000
+		planet_amenities_no_happiness_add = 3000
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = 3
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_micro_replicators"
+	}
+
+	upgrades = {
+		"building_avb_drone_storage_3"
+	}
+
+	ai_weight_coefficient = 1.25
+}
+
+#Hive housing
+building_expanded_warren = {
+	base_buildtime = @b2_time
+	can_build = no
+
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+	}
+
+	potential = {
+		exists = owner
+		has_building = building_hive_warren
+		owner = { is_wilderness_empire = no }
+	}
+
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { is_hive_empire = no }
+	}
+
+	show_tech_unlock_if = {
+		owner = { is_hive_empire = yes }
+	}
+
+	convert_to = {
+		building_paradise_dome
+		building_drone_megastorage
+		building_communal_housing_large
+	}
+
+	planet_modifier = {
+		planet_housing_add = 3000
+		planet_amenities_no_happiness_add = 3000
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			rare_crystals = @b2_rare_cost
+		}
+		upkeep = {
+			energy = 3
+			rare_crystals = @b2_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_housing_2"
+	}
+
+	ai_weight_coefficient = 1.25
+
+	upgrades = {
+		building_avb_warren_3
+	}
+}
+
+building_hyper_entertainment_forum = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+	can_build = no
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+		entertainment
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { has_valid_civic = civic_dystopian_society }
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+		}
+	}
+
+	planet_modifier = {
+		planet_entertainers_upkeep_mult = -0.10
+	}
+
+	inline_script = {
+		script = jobs/entertainers_add
+		AMOUNT = @building_static_jobs_high
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			exotic_gases = @b2_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_hyper_entertainment_forum"
+	}
+
+	upgrades = {
+		"building_avb_holo_theatre_3"
+	}
+}
+
+building_medical_3 = {
+	base_buildtime = @b3_time
+	can_build = no
+
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+		medical
+	}
+
+	potential = {
+		exists = owner
+		has_upgraded_capital = yes
+		OR = {
+			owner = {
+				OR = {
+					has_valid_civic = civic_private_healthcare_corporate
+					is_ai = no
+				}
+			}
+			AND = {
+				NOT = { has_available_jobs = entertainer }
+				NOT = { has_forbidden_jobs = entertainer }
+				planet_stability < 55
+				free_amenities < 5
+			}
+			AND = {
+				has_branch_office = yes
+				branch_office_owner = {
+					has_valid_civic = civic_private_healthcare_corporate
+				}
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			AND = {
+				buildings_stop_pop = yes
+				owner = { is_ai = yes }
+			}
+		}
+	}
+
+	inline_script = {
+		script = jobs/healthcare_add
+		AMOUNT = @building_static_jobs
+	}
+
+	planet_modifier = {
+		planet_doctors_upkeep_mult = -0.10
+		pop_amenities_usage_organic_mult = -0.10
+		# Modifier implmented in /inline_scripts/output/healthcare_triggered_modifiers.txt
+		pop_environment_tolerance = @building_medical_3_environment_tolerance
+		job_healthcare_organics_upkeep_mult = @building_medical_3_organics_upkeep
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_gene_tailoring
+			}
+			any_owned_pop_group = {
+				has_auto_modding_trait = yes
+			}
+		}
+		modifier = {
+			auto_mod_monthly_add = 200
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				game_start_auto_mod_empire = yes
+			}
+			any_owned_pop_group = {
+				has_auto_modding_trait = yes
+			}
+		}
+		modifier = {
+			auto_mod_monthly_add = 200
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_country_flag = clone_army_full_potential
+				has_active_tradition = tr_cloning_artificial_population_clone_army
+			}
+		}
+		clone_soldiers_sustained = @clones_sustained_low
+		mult = 3
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_purity_heightened_attributes_tradition = yes
+			}
+		}
+		organic_pop_bonus_workforce_mult = @medical_workforce_mult
+		mult = 3
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b2_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		cost = {
+			exotic_gases = @b2_rare_cost
+		}
+		upkeep = {
+			energy = @b2_upkeep
+			exotic_gases = @b2_rare_upkeep
+		}
+	}
+
+	prerequisites = {
+		"tech_frontier_hospital"
+	}
+
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+	}
+
+	upgrades = {
+		"building_avb_clinic_3"
+	}
+}
+
+building_overseer_homes = {
+	base_buildtime = 240
+	icon = building_residence
+
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+	}
+
+	potential = {
+		has_modifier = slave_colony
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			owner = { is_regular_empire = no }
+			NOT = { has_modifier = slave_colony }
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 200
+		job_slave_overseer_add = 200
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = 200
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	upgrades = {
+		"building_avb_overseer_homes_2"
+	}
+}
+
+building_toxic_bath = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+	icon = building_toxic_bath
+
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+		industrial
+		foundry
+		factory
+		entertainment
+		research
+		unity
+	}
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		owner = {
+			is_toxic_baths_empire = yes
+			OR = {
+				AND = {
+					is_regular_empire = yes
+					is_individual_machine = no
+				}
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		OR = {
+			has_modifier = slave_colony
+			owner = {
+				OR = {
+					is_toxic_baths_empire = no
+					is_individual_machine = yes
+					AND = {
+						is_regular_empire = no
+						NOT = {
+							has_valid_civic = civic_machine_servitor
+						}
+					}
+				}
+			}
+		}
+	}
+
+	convert_to = {
+		building_toxic_bath_hive
+		building_toxic_bath_machine
+	}
+
+	planet_modifier = {
+		habitability_floor_add = -0.10
+		habitability_ceil_add = -0.10
+		pop_environment_tolerance = -0.10
+	}
+
+	inline_script = {
+		script = jobs/bath_attendant_add
+		AMOUNT = @building_static_jobs
+	}
+
+	triggered_desc = {
+		text = building_toxic_bath_tt
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b1_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	upgrades = {
+		"building_avb_toxic_bath_2"
+	}
+}
+
+building_toxic_bath_hive = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+	icon = building_toxic_bath_hive
+
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+		industrial
+		foundry
+		factory
+		entertainment
+		research
+		unity
+	}
+
+	potential = {
+		owner = {
+			is_hive_empire = yes
+			is_wilderness_empire = no
+			is_toxic_baths_empire = yes
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_hive_empire = no
+				NOT = { has_valid_civic = civic_hive_toxic_baths }
+			}
+		}
+	}
+
+	planet_modifier = {
+		habitability_floor_add = -0.10
+		habitability_ceil_add = -0.10
+		pop_environment_tolerance = -0.10
+	}
+
+	inline_script = {
+		script = jobs/bath_attendant_add
+		AMOUNT = @building_static_jobs
+	}
+
+	triggered_desc = {
+		text = building_toxic_bath_tt
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b1_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	upgrades = {
+		"building_avb_toxic_bath_hive_2"
+	}
+}
+
+building_toxic_bath_machine = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+	icon = building_toxic_bath_machine
+
+	category = amenity
+
+	building_sets = {
+		government
+		urban
+		industrial
+		foundry
+		factory
+		entertainment
+		research
+		unity
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_toxic_baths_empire = yes
+			is_synthetic_empire = yes
+			NOT = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			OR = {
+				is_synthetic_empire = no
+				has_valid_civic = civic_machine_servitor
+				is_toxic_baths_empire = no
+			}
+		}
+	}
+
+	convert_to = {
+		building_toxic_bath
+		building_toxic_bath_hive
+	}
+
+	planet_modifier = {
+		habitability_floor_add = -0.10
+		habitability_ceil_add = -0.10
+		pop_environment_tolerance = -0.10
+	}
+
+	inline_script = {
+		script = jobs/bath_attendant_add
+		AMOUNT = @building_static_jobs
+	}
+
+	triggered_desc = {
+		text = building_toxic_bath_tt
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b1_minerals
+			NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+		}
+		upkeep = {
+			energy = @b1_upkeep
+		}
+	}
+
+	upgrades = {
+		"building_avb_toxic_bath_machine_2"
+	}
+}

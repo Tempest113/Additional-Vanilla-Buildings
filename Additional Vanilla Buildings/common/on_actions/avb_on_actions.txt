@@ -1,0 +1,14 @@
+# Triggers when the game starts
+# For some one who need that mod to work with other
+on_game_start = {
+	events = {
+		avb.1
+	}
+}
+
+on_building_upgraded = {
+	events = {
+		avb.2
+		avb.3
+	}
+}

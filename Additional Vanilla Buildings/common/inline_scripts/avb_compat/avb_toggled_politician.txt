@@ -1,0 +1,18 @@
+# Dear Irony please fallback to simple parser
+
+inline_script = {
+	script = avb_compat/avb_toggled_code
+	toggle = $toggle$
+
+	code = "
+		triggered_planet_modifier = {
+			potential = {
+				exists = owner
+				owner = {
+					has_valid_civic = $CIVIC$
+				}
+			}
+			job_politician_add = $AMOUNT$
+		}
+	"
+}
