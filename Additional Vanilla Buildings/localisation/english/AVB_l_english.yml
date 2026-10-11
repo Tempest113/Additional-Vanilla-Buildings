@@ -514,6 +514,15 @@
  requires_building_machine_capital_4:1 "§RRequires §Y$building_avb_machine_capital_4$§! on planet.§!"
  requires_building_resort_capital_3:1 "§RRequires §Y$building_avb_resort_capital_3$§! on planet.§!"
  requires_building_slave_capital_3:1 "§RRequires §Y$building_avb_slave_capital_3$§! on planet.§!"
+ requires_building_capital_5:1 "§RRequires §Y$building_avb_capital_5$§! on planet.§!"
+ requires_building_capital_6:1 "§RRequires §Y$building_avb_capital_6$§! on planet.§!"
+ requires_building_machine_capital_5:1 "§RRequires §Y$building_avb_machine_capital_5$§! on planet.§!"
+ requires_building_machine_capital_6:1 "§RRequires §Y$building_avb_machine_capital_6$§! on planet.§!"
+ requires_building_hab_capital_4:1 "§RRequires §Y$building_avb_hab_capital_4$§! on planet.§!"
+ requires_building_hive_capital_3:1 "§RRequires §Y$building_avb_hive_capital_3$§! on planet.§!"
+ requires_building_hive_capital_4:1 "§RRequires §Y$building_avb_hive_capital_4$§! on planet.§!"
+ requires_building_wilderness_capital_4:1 "§RRequires §Y$building_avb_wilderness_capital_4$§! on planet.§!"
+ requires_building_wilderness_capital_5:1 "§RRequires §Y$building_avb_wilderness_capital_5$§! on planet.§!"
  
  
  
@@ -856,12 +865,12 @@
  building_avb_cyberdome_2: "Hyper Cyberdome"
  building_avb_cyberdome_2_desc: "Hosts savage cybersports with augmented athletes for the entertainment of the imperial citizens. Enhanced gladiators, athletes and sprinters compete for our favor until damaged or dead."
  #Wilderness
- building_avb_wilderness_capital_5: "Planetary Root Sanctum"
- building_avb_wilderness_capital_5_desc: "A secluded enclave where the root network attains its peak complexity, fostering advanced symbiotic rituals that enhance collective resilience."
- building_avb_wilderness_capital_6: "Planetary Root Citadel"
- building_avb_wilderness_capital_6_desc: "The pinnacle of root architecture, a fortified nexus that channels the biosphere’s energy into structured bio‑engineering projects and interspecies governance."
+ building_avb_wilderness_capital_4: "Planetary Root Sanctum"
+ building_avb_wilderness_capital_4_desc: "A secluded enclave where the root network attains its peak complexity, fostering advanced symbiotic rituals that enhance collective resilience."
+ building_avb_wilderness_capital_5: "Planetary Root Citadel"
+ building_avb_wilderness_capital_5_desc: "The pinnacle of root architecture, a fortified nexus that channels the biosphere’s energy into structured bio‑engineering projects and interspecies governance."
+ tech_avb_wilderness_capital_4: "$building_avb_wilderness_capital_4$"
  tech_avb_wilderness_capital_5: "$building_avb_wilderness_capital_5$"
- tech_avb_wilderness_capital_6: "$building_avb_wilderness_capital_6$"
  # Cradle
  building_avb_cradle_rebirth_2: "Silken Skin"
  building_avb_cradle_rebirth_2_desc: "The Cradle breathes with the echoes of countless spores and crystalline formations. It isn't built; it becomes, drawing sustenance from the planetary atmosphere through a network of interwoven root-like structures and bioluminescent filaments."

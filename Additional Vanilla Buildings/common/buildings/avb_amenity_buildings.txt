@@ -1233,7 +1233,6 @@ building_avb_clinic_4 = {
 	}
 
 	potential = {
-		has_fully_upgraded_capital = yes
 		OR = {
 			owner = {
 				OR = {
@@ -1259,28 +1258,7 @@ building_avb_clinic_4 = {
 	}
 
 	allow = {
-		OR = {
-			owner = {
-				OR = {
-					has_valid_civic = civic_private_healthcare_corporate
-					is_ai = no
-				}
-			}
-			AND = {
-				NOR = {
-					has_available_jobs = entertainer
-					has_forbidden_jobs = entertainer
-				}
-				planet_stability < 55
-				free_amenities < 5
-			}
-			AND = {
-				has_branch_office = yes
-				branch_office_owner = {
-					has_valid_civic = civic_private_healthcare_corporate
-				}
-			}
-		}
+		has_fully_upgraded_capital = yes
 	}
 
 	destroy_trigger = {

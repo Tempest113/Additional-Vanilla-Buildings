@@ -512,6 +512,15 @@
  requires_building_machine_capital_4:1 "§RRequires §Y$building_avb_machine_capital_4$§! on planet.§!"
  requires_building_resort_capital_3:1 "§RRequires §Y$building_avb_resort_capital_3$§! on planet.§!"
  requires_building_slave_capital_3:1 "§RRequires §Y$building_avb_slave_capital_3$§! on planet.§!"
+ requires_building_capital_5:1 "§RRequires §Y$building_avb_capital_5$§! on planet.§!"
+ requires_building_capital_6:1 "§RRequires §Y$building_avb_capital_6$§! on planet.§!"
+ requires_building_machine_capital_5:1 "§RRequires §Y$building_avb_machine_capital_5$§! on planet.§!"
+ requires_building_machine_capital_6:1 "§RRequires §Y$building_avb_machine_capital_6$§! on planet.§!"
+ requires_building_hab_capital_4:1 "§RRequires §Y$building_avb_hab_capital_4$§! on planet.§!"
+ requires_building_hive_capital_3:1 "§RRequires §Y$building_avb_hive_capital_3$§! on planet.§!"
+ requires_building_hive_capital_4:1 "§RRequires §Y$building_avb_hive_capital_4$§! on planet.§!"
+ requires_building_wilderness_capital_4:1 "§RRequires §Y$building_avb_wilderness_capital_4$§! on planet.§!"
+ requires_building_wilderness_capital_5:1 "§RRequires §Y$building_avb_wilderness_capital_5$§! on planet.§!"
  
  
  

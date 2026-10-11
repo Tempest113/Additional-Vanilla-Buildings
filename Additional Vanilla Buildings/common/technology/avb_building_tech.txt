@@ -18,7 +18,7 @@ tech_avb_capital_4 = {
 
 	technology_swap = {
 		# Wilderness icon swap
-		name = tech_avb_wilderness_capital_5
+		name = tech_avb_wilderness_capital_4
 		inherit_icon = no
 		inherit_effects = yes
 		trigger = {
@@ -58,7 +58,7 @@ tech_avb_capital_5 = {
 
 	technology_swap = {
 		# Wilderness icon swap
-		name = tech_avb_wilderness_capital_6
+		name = tech_avb_wilderness_capital_5
 		inherit_icon = no
 		inherit_effects = yes
 		trigger = {

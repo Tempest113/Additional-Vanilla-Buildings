@@ -83,7 +83,7 @@ building_system_capital_wilderness = {
 	}
 
 	upgrades = {
-		building_avb_wilderness_capital_5
+		building_avb_wilderness_capital_4
 		building_imperial_capital_wilderness
 	}
 

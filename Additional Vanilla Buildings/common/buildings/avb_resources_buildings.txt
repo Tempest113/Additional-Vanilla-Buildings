@@ -934,7 +934,7 @@ building_avb_energy_grid_4 = {
 	}
 
 	allow = {
-		has_upgraded_capital_5 = yes
+		has_upgraded_capital_4 = yes
 	}
 
 	resources = {

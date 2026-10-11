@@ -122,7 +122,7 @@ building_avb_capital_5 = {
 		building_avb_slave_capital_3
 		building_ancient_control_center
 		building_ancient_palace
-		building_avb_wilderness_capital_5
+		building_avb_wilderness_capital_4
 	}
 
 	allow = {
@@ -212,7 +212,7 @@ building_avb_capital_6 = {
 		building_avb_slave_capital_3
 		building_ancient_control_center
 		building_ancient_palace
-		building_avb_wilderness_capital_6
+		building_avb_wilderness_capital_5
 	}
 
 	allow = {
@@ -375,7 +375,7 @@ building_avb_hive_capital_4 = {
 		building_avb_machine_capital_5
 		building_ancient_control_center
 		building_ancient_palace
-		building_avb_wilderness_capital_5
+		building_avb_wilderness_capital_4
 	}
 
 	allow = {
@@ -569,7 +569,7 @@ building_avb_machine_capital_5 = {
 		building_avb_machine_capital_4
 		building_ancient_control_center
 		building_ancient_palace
-		building_avb_wilderness_capital_5
+		building_avb_wilderness_capital_4
 	}
 
 	allow = {
@@ -687,7 +687,7 @@ building_avb_machine_capital_6 = {
 		building_avb_machine_capital_5
 		building_ancient_control_center
 		building_ancient_palace
-		building_avb_wilderness_capital_6
+		building_avb_wilderness_capital_5
 	}
 
 	allow = {

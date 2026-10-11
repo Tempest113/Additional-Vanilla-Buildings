@@ -927,20 +927,6 @@ building_clone_vats = {
 	upgrades = {
 		building_avb_clone_vats_2
 	}
-
-	inline_script = {
-		script = avb_compat/avb_toggled_code
-		toggle = @has_bug_branch
-		code = "
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { is_bugged_evolutionary_architects = yes }
-				}
-				planet_jobs_unity_produces_mult = 0.2
-			}
-		"
-	}
 }
 
 building_clone_army_clone_vat = {
@@ -1142,20 +1128,6 @@ building_clone_army_clone_vat = {
 
 	is_essential = yes
 	ai_estimate_without_unemployment = yes
-
-	inline_script = {
-		script = avb_compat/avb_toggled_code
-		toggle = @has_bug_branch
-		code = "
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { is_bugged_evolutionary_architects = yes }
-				}
-				planet_jobs_unity_produces_mult = 0.2
-			}
-		"
-	}
 }
 
 #############
